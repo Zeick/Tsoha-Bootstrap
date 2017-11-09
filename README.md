@@ -1,6 +1,6 @@
 # Tietokantasovellukseni tietosivu
 
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi) (Tulossa myöhemmin!)
+* [Linkki sovellukseeni](http://tjkarkka.users.cs.helsinki.fi/tsoha/hiekkalaatikko)
 * [Linkki dokumentaatiooni](https://github.com/Zeick/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
 
 ## Työn aihe
