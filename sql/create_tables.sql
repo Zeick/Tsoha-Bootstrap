@@ -23,12 +23,12 @@ CREATE TABLE OmaPokemon(
     lempinimi varchar(20),
     esine varchar(20),
     FOREIGN KEY(pid) REFERENCES Pokemon(id),
-    FOREIGN KEY(kid) REFERENCES kouluttaja(nimi)
+    FOREIGN KEY(kid) REFERENCES Kouluttaja(nimi)
 );
 
 CREATE TABLE Liiga(
     nimi varchar(20) PRIMARY KEY,
-    FOREIGN KEY (johtaja) REFERENCES Kouluttaja(nimi)
+    FOREIGN KEY(johtaja) REFERENCES Kouluttaja(nimi)
 );
 
 CREATE TABLE Jasenyys(
