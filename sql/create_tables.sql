@@ -3,7 +3,7 @@ CREATE TABLE Pokemon(
     id SERIAL PRIMARY KEY,
     nimi varchar(20) NOT NULL,
     pituus INTEGER,
-    paino INTEGER,
+    paino INTEGER
 );
 
 CREATE TABLE Kouluttaja(
