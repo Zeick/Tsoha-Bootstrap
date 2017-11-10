@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Bulbasaur (Sipuli)</h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+      <li><strong>Lv21, 200 HP</strong>
+    <li><strong>ATK/DEF/SPEED/SPATK/SPDEF</strong>: 10/20/30/22/21</li>
+    <li><strong>Sukupuoli:</strong> U</li>
+    <li><strong>Esine:</strong> <label class="label label-danger">Quick Claw</label></li>
+    <li><strong>Status:</strong> <label class="label label-danger">Aktiivinen taistelija</label></li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    Sipuli on ensimmäinen Pokémonini. Sen avulla päihitin Rakettiryhmän Saffron Cityn taistelussa vuonna 1999.
+  </p>
+{% endblock %}

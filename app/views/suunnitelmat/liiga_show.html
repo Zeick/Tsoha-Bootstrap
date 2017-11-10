@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Liiga Indigo <button class="btn btn-success">Jäsen</button></h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Eroa liigasta</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Liigajohtaja: </strong> Tom Aatti
+    <li><strong>Kouluttajia yhteensä:</strong> 2</li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    Tähän liigaan pääsee vain jos on syntynyt Kantossa. Johtossa syntyneet älkööt vaivautuko!
+  </p>
+{% endblock %}

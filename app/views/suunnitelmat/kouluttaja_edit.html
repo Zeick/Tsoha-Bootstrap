@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa Käyttäjää Tom Aatti</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Lempipokémon</label>
+      <input type="text" class="form-control" value="Sipuli">
+    </div>
+    <div class="form-group">
+      <label>Liiga</label> <button type="submit" class="btn btn-danger">Eroa liigasta</button>
+      <input type="text" class="form-control" value="Indigo">
+    </div>
+
+    <div class="form-group">
+      <label>Kerro jotakin itsestäsi:</label>
+      <textarea class="form-control">Olen kymmenenvuotias tomaatti, joka pitää kasviksista. Siksi käytän pääasiassa ruohopokémoneja. Erityisesti Kannabishiksi nimeämäni Oddish on lähellä sydäntäni.
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

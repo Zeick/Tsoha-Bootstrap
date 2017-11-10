@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Muokkaa Pokémon-lajia Bulbasaur</h1>
+
+  <form>
+    <div class="form-group">
+      <label>Pituus (cm)</label>
+      <input type="text" class="form-control" value="60">
+    </div>
+    <div class="form-group">
+      <label>Paino (kg)</label>
+      <input type="text" class="form-control" value="40">
+    </div>
+    <div class="form-group">
+      <label>Kuvaus</label>
+      <textarea class="form-control">Bulbapedia on nimetty Bulbasaurin mukaan. Lisäksi Ashillä, Maylla ja Redillä on Bulbasaurit.
+      </textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

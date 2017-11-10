@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Tom Aatti<button class="btn btn-success">Liigajohtaja</button></h1>
+  <!-- Painikkeet tähän -->
+  <p>
+    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
+  </p>
+  <!-- Tiedot tulee listana tähän -->
+  <ul>
+    <li><strong>Lempipokémon:</strong> Sipuli
+    <li><strong>Liiga:</strong> Indigo <label class="label label-danger">Johtaja</label></li>
+  </ul>
+  <!-- Kuvaus tulee tähän -->
+  <p>
+    Olen kymmenenvuotias tomaatti, joka pitää kasviksista. Siksi käytän pääasiassa ruohopokémoneja. Erityisesti Kannabishiksi nimeämäni Oddish on lähellä sydäntäni.
+  </p>
+{% endblock %}

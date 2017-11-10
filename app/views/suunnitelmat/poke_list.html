@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Käyttäjän Tom Aatti Pokémonit</h1>
+
+  <p>
+    <a href="#" class="btn btn-success">Lisää Pokémon</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Laji</th>
+        <th>Lempinimi</th>
+        <th>Atk</th>
+        <th>Def</th>
+        <th>Speed</th>
+        <th>SpAtk</th>
+        <th>SpDef</th>
+        <th>HP</th>
+        <th>Lv</th>
+        <th>Sukupuoli</th>
+        <th>Esine</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Listataan Pokémonit tähän -->
+      <tr>
+        <td>Bulbasaur</td>
+        <td>Sipuli</td>
+        <td>10</td>
+        <td>20</td>
+        <td>30</td>
+        <td>22</td>
+        <td>21</td>
+        <td>200</td>
+        <td>21</td>
+        <td>U</td>
+        <td>Quick Claw</td>
+      </tr>
+      <tr>
+        <td>Jigglypuff</td>
+        <td>Puff</td>
+        <td>12</td>
+        <td>11</td>
+        <td>11</td>
+        <td>12</td>
+        <td>11</td>
+        <td>50</td>
+        <td>12</td>
+        <td>N</td>
+        <td>Gold Berry</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
