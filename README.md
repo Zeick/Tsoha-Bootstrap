@@ -11,7 +11,7 @@ Olen vainnut aiheeksi [valmiin aiheen joka on nimeltään Pokémontietokanta.](h
 * [Esimerkkilaji: Bulbasaur](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/1)
 * [Uuden lajin lisääminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/new)
 
-# Valmis ulkoasu (toiminnallisuus tulossa!)
+## Valmis ulkoasu (toiminnallisuus tulossa!)
 * [Lajin muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji_edit)
 * [Pokémon-liigalista](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga)
 * [Esimerkkiliiga](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga/1)
