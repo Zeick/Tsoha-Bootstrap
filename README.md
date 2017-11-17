@@ -1,3 +1,5 @@
+Projekti on nyt valmis vertaisarvioitavaksi viikolta 3.
+
 # Tietokantasovellukseni tietosivu
 * [Sovellus.](http://tjkarkka.users.cs.helsinki.fi/tsoha)
 * [Dokumentaatio.](https://github.com/Zeick/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
