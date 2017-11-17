@@ -1,9 +1,11 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Pokemon(
     id SERIAL PRIMARY KEY,
+    tunnusluku INTEGER,
     nimi varchar(20) NOT NULL,
     pituus INTEGER,
-    paino INTEGER
+    paino INTEGER,
+    kuvaus varchar(1000)
 );
 
 CREATE TABLE Kouluttaja(

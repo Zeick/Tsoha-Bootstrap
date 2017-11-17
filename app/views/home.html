@@ -1,31 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="page-header">
-    <h1>Tervetuloa Tsoha Bootstrappiin!</h1>
-  </div>
-        <p>Tervetuloa Pokémontietokantasivustolleni! On vielä rakenteilla...</p>
-        <p>
-            <a href="liiga" class="btn btn-primary btn-lg">Pokémon-liigat <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="liiga/1" class="btn btn-primary btn-lg">Esimerkkiliiga <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="liiga_edit" class="btn btn-primary btn-lg">Esimerkkiliigan editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </p>
-        <p>
-            <a href="kouluttaja" class="btn btn-primary btn-lg">Kouluttajat <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="kouluttaja/1" class="btn btn-primary btn-lg">Esimerkkikouluttaja <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="kouluttaja_edit" class="btn btn-primary btn-lg">Esimerkkikouluttajan editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </p>
-        <p>
-            <a href="laji" class="btn btn-primary btn-lg">Pokémon-lajit <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="laji/1" class="btn btn-primary btn-lg">Esimerkkilaji <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="laji_edit" class="btn btn-primary btn-lg">Esimerkkilajin editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </p>
-        <p>
-            <a href="poke" class="btn btn-primary btn-lg">Esimerkkikäyttäjän pokémonit <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="poke/1" class="btn btn-primary btn-lg">Esimerkkipokémon <span class="glyphicon glyphicon-chevron-right"></span></a>
-            <a href="poke_edit" class="btn btn-primary btn-lg">Esimerkkipokémonin editintisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-        </p>
-  <p>
+<div class="page-header">
+    <h1>Tervetuloa Pokémon-tietokantaan!</h1>
+</div>
+<p>
     <a href="https://github.com/Zeick/Tsoha-Bootstrap" class="btn btn-primary btn-lg">GitHub-lähdekoodi <span class="glyphicon glyphicon-chevron-right"></span></a>
-  </p>
+</p>
+
+<p>Sivusto on vielä rakenteilla. Pokémon-lajien lisääminen tietokantaan onnistuu jo.</p>
+<p>
+    <a href="laji" class="btn btn-primary btn-lg">Pokémon-lajit <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="laji/1" class="btn btn-primary btn-lg">Esimerkkilaji: Bulbasaur <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="laji/new" class="btn btn-primary btn-lg">Lisää uusi Pokémon! <span class="glyphicon glyphicon-chevron-right"></span></a>
+</p>
+<h2>Huom: näissä ei ole vielä toiminnallisuutta. Ne ovat esimakua tulevasta...</h2>
+<p>
+    <a href="liiga" class="btn btn-primary btn-lg">Pokémon-liigat <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="liiga/1" class="btn btn-primary btn-lg">Esimerkkiliiga <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="liiga_edit" class="btn btn-primary btn-lg">Esimerkkiliigan editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
+</p>
+<p>
+    <a href="kouluttaja" class="btn btn-primary btn-lg">Kouluttajat <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="kouluttaja/1" class="btn btn-primary btn-lg">Esimerkkikouluttaja <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="kouluttaja_edit" class="btn btn-primary btn-lg">Esimerkkikouluttajan editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
+</p>
+<p>
+    <a href="poke" class="btn btn-primary btn-lg">Esimerkkikäyttäjän pokémonit <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="poke/1" class="btn btn-primary btn-lg">Esimerkkipokémon <span class="glyphicon glyphicon-chevron-right"></span></a>
+    <a href="poke_edit" class="btn btn-primary btn-lg">Esimerkkipokémonin editintisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
+</p>
 {% endblock %}
