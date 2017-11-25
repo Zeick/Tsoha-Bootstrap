@@ -18,9 +18,6 @@ $routes->get('/poke/p/:pid', function($pid) {
     OmaPokemonController::showByPokemon($pid);
 });
 
-$routes->get('/login', function() {
-    HelloWorldController::login();
-});
 $routes->get('/poke_edit', function() {
     HelloWorldController::poke_edit();
 });
@@ -67,5 +64,12 @@ $routes->post('/laji/:id/edit', function($id) {
 });
 $routes->post('/laji/:id/destroy', function($id) {
     PokemonController::destroy($id);
+});
+
+$routes->get('/login', function(){
+    UserController::login();
+});
+$routes->post('/login', function(){
+    UserController::handle_login();
 });
 

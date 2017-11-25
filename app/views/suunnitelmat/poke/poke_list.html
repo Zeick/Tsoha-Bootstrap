@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+{% if user_logged_in %}
+    <h2>Käyttäjä {{user_logged_in.nimi}} on kirjautunut sisään :-)</h2>
+{% else %}
+<h2>Et ole kirjautunut :-(</h2>
+{% endif %}
 <h1>Pokémonit</h1>
 
 <p>
