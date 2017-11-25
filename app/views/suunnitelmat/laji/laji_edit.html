@@ -1,23 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa Pokémon-lajia Bulbasaur</h1>
-
-  <form>
+{% if errors %}
+    <div class="alert alert-danger">
+        <p><b>Pokémon-lajin muokkaaminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+<form method="post" action="{{base_path}}/laji/{{attributes.id}}/edit">
     <div class="form-group">
-      <label>Pituus (cm)</label>
-      <input type="text" class="form-control" value="60">
+        <label>Nimi (max. 20 merkkiä)</label>
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
     <div class="form-group">
-      <label>Paino (kg)</label>
-      <input type="text" class="form-control" value="40">
+        <label>Tunnusluku (kokonaisluku!)</label>
+        <input type="text" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
     </div>
     <div class="form-group">
-      <label>Kuvaus</label>
-      <textarea class="form-control">Bulbapedia on nimetty Bulbasaurin mukaan. Lisäksi Ashillä, Maylla ja Redillä on Bulbasaurit.
-      </textarea>
+        <label>Pituus (cm, kokonaisluku!)</label>
+        <input type="text" name="pituus" class="form-control" value="{{attributes.pituus}}">
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Tallenna</button>
+        <label>Paino (kg, kokonaisluku!)</label>
+        <input type="text" name="paino" class="form-control" value="{{attributes.paino}}">
     </div>
-  </form>
+    <div class="form-group">
+        <label>Kuvaus (max. 2000 merkkiä)</label>
+        <textarea rows="5" name="kuvaus" class="form-control">{{attributes.kuvaus}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Muokkaa Pokémonia!</button>
+    </div>
+</form>
 {% endblock %}

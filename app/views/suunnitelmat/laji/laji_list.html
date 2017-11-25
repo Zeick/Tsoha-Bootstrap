@@ -13,6 +13,7 @@
             <th>Tunnusluku</th>
             <th>Pituus (cm)</th>
             <th>Paino (kg)</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,14 @@
             <td>{{poke.tunnusluku}}</td>
             <td>{{poke.pituus}}</td>
             <td>{{poke.paino}}</td>
+            <td>
+                <a href="{{base_path}}/laji/{{poke.id}}/edit">
+                    <button type="submit" class="btn btn-danger">Muokkaa</button>
+                </a>
+                <form method="post" action="{{base_path}}/laji/{{poke.id}}/destroy" style="display: inline-block;">
+                    <button type="submit" class="btn btn-danger">Poista</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

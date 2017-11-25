@@ -15,7 +15,7 @@ $routes->get('/poke/k/:kid', function($kid) {
     OmaPokemonController::showByTrainer($kid);
 });
 $routes->get('/poke/p/:pid', function($pid) {
-OmaPokemonController::showByPokemon($pid);
+    OmaPokemonController::showByPokemon($pid);
 });
 
 $routes->get('/login', function() {
@@ -58,5 +58,14 @@ $routes->get('/laji_edit', function() {
 $routes->get('/laji/:id', function($id) {
     PokemonController::show($id);
 });
+$routes->get('/laji/:id/edit', function($id) {
+    PokemonController::edit($id);
+});
 
+$routes->post('/laji/:id/edit', function($id) {
+    PokemonController::update($id);
+});
+$routes->post('/laji/:id/destroy', function($id) {
+    PokemonController::destroy($id);
+});
 
