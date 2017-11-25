@@ -13,10 +13,21 @@ class HelloWorldController extends BaseController {
     public static function sandbox() {
         // Testaa koodiasi täällä
         //View::make('helloworld.html');
-        $bulba = Pokemon::find(1);
-        $kaikki = Pokemon::all();
-        Kint::dump($kaikki);
-        Kint::dump($bulba);
+//        $bulba = Pokemon::find(1);
+  //      $kaikki = Pokemon::all();
+    //    Kint::dump($kaikki);
+      //  Kint::dump($bulba);
+        $voltti = new Pokemon(array(
+            'id' => 100,
+            'nimi' => 'Voltorb',
+            'pituus' => -5,
+            'paino' => 10,
+            'tunnusluku' => '10',
+            'kuvaus' => 'Näyttää pallolta'
+        ));
+        $errors = $voltti->errors();
+        
+        Kint::dump($errors);
     }
 
     public static function poke_list() {

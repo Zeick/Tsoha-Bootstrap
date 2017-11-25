@@ -1,26 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Lisää Pokémon-laji</h1>
+{% if errors %}
+    <div class="alert alert-danger">
+        <p><b>Pokémon-lajin lisääminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
+      <ul>
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
 <form method="post" action="{{base_path}}/laji">
     <div class="form-group">
-        <label>Nimi</label>
-        <input type="text" name="nimi" class="form-control">
+        <label>Nimi (max. 20 merkkiä)</label>
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
     <div class="form-group">
-        <label>Tunnusluku</label>
-        <input type="text" name="tunnusluku" class="form-control">
+        <label>Tunnusluku (kokonaisluku!)</label>
+        <input type="text" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
     </div>
     <div class="form-group">
-        <label>Pituus</label>
-        <input type="text" name="pituus" class="form-control">
+        <label>Pituus (cm, kokonaisluku!)</label>
+        <input type="text" name="pituus" class="form-control" value="{{attributes.pituus}}">
     </div>
     <div class="form-group">
-        <label>Paino</label>
-        <input type="text" name="paino" class="form-control">
+        <label>Paino (kg, kokonaisluku!)</label>
+        <input type="text" name="paino" class="form-control" value="{{attributes.paino}}">
     </div>
     <div class="form-group">
-        <label>Kuvaus</label>
-        <textarea rows="5" name="kuvaus" class="form-control"></textarea>
+        <label>Kuvaus (max. 2000 merkkiä)</label>
+        <textarea rows="5" name="kuvaus" class="form-control">{{attributes.kuvaus}}</textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Lisää uusi Pokémon!</button>

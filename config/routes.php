@@ -9,11 +9,15 @@ $routes->get('/hiekkalaatikko', function() {
 });
 
 $routes->get('/poke', function() {
-    HelloWorldController::poke_list();
+    OmaPokemonController::index();
 });
-$routes->get('/poke/1', function() {
-    HelloWorldController::poke_show();
+$routes->get('/poke/k/:kid', function($kid) {
+    OmaPokemonController::showByTrainer($kid);
 });
+$routes->get('/poke/p/:pid', function($pid) {
+OmaPokemonController::showByPokemon($pid);
+});
+
 $routes->get('/login', function() {
     HelloWorldController::login();
 });

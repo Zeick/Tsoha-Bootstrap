@@ -1,56 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Käyttäjän Tom Aatti Pokémonit</h1>
+<h1>Pokémonit</h1>
 
-  <p>
-    <a href="#" class="btn btn-success">Lisää Pokémon</a>
-  </p>
+<p>
+    <a href="{{base_path}}/poke/new" class="btn btn-success">Lisää uusi Pokémon joukkueeseesi</a>
+</p>
 
-  <table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered">
     <thead>
-      <tr>
-        <th>Laji</th>
-        <th>Lempinimi</th>
-        <th>Atk</th>
-        <th>Def</th>
-        <th>Speed</th>
-        <th>SpAtk</th>
-        <th>SpDef</th>
-        <th>HP</th>
-        <th>Lv</th>
-        <th>Sukupuoli</th>
-        <th>Esine</th>
-      </tr>
+        <tr>
+            <th>Laji (nro)</th>
+            <th>Kouluttaja</th>
+            <th>Lempinimi</th>
+            <th>Atk</th>
+            <th>Def</th>
+            <th>Speed</th>
+            <th>SpAtk</th>
+            <th>SpDef</th>
+            <th>HP</th>
+            <th>Lv</th>
+            <th>Sukupuoli</th>
+            <th>Esine</th>
+        </tr>
     </thead>
 
     <tbody>
-      <!-- Listataan Pokémonit tähän -->
-      <tr>
-        <td>Bulbasaur</td>
-        <td>Sipuli</td>
-        <td>10</td>
-        <td>20</td>
-        <td>30</td>
-        <td>22</td>
-        <td>21</td>
-        <td>200</td>
-        <td>21</td>
-        <td>U</td>
-        <td>Quick Claw</td>
-      </tr>
-      <tr>
-        <td>Jigglypuff</td>
-        <td>Puff</td>
-        <td>12</td>
-        <td>11</td>
-        <td>11</td>
-        <td>12</td>
-        <td>11</td>
-        <td>50</td>
-        <td>12</td>
-        <td>N</td>
-        <td>Gold Berry</td>
-      </tr>
+        {% for p in kaikki %}
+        <tr>
+            <td><a href="{{base_path}}/poke/p/{{p.pid}}">{{p.pid}}</a></td>
+            <td><a href="{{base_path}}/poke/k/{{p.kid}}">{{p.kid}}</a></td>
+            <td>{{p.lempinimi}}</td>
+            <td>{{p.atk}}</td>
+            <td>{{p.def}}</td>
+            <td>{{p.speed}}</td>
+            <td>{{p.spatk}}</td>
+            <td>{{p.spdef}}</td>
+            <td>{{p.hp}}</td>
+            <td>{{p.lvl}}</td>
+            <td>{{p.sukupuoli}}</td>
+            <td>{{p.esine}}</td>
+        </tr>
+        {% endfor %}
     </tbody>
-  </table>
+</table>
 {% endblock %}

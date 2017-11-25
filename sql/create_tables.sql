@@ -1,7 +1,7 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Pokemon(
-    id SERIAL PRIMARY KEY,
-    tunnusluku INTEGER,
+--    id SERIAL PRIMARY KEY,
+    tunnusluku INTEGER PRIMARY KEY,
     nimi varchar(20) NOT NULL,
     pituus INTEGER,
     paino INTEGER,
@@ -24,7 +24,7 @@ CREATE TABLE OmaPokemon(
     sukupuoli varchar(1),
     lempinimi varchar(20),
     esine varchar(20),
-    pid INTEGER REFERENCES Pokemon(id),
+    pid INTEGER REFERENCES Pokemon(tunnusluku),
     kid varchar(20) REFERENCES Kouluttaja(nimi)
 );
 

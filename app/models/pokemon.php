@@ -6,8 +6,24 @@ class Pokemon extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
+        $this->validators = ['tarkista_nimi','tarkista_tunnusluku','tarkista_pituus','tarkista_paino'];
     }
 
+    public function tarkista_nimi(){
+        return BaseModel::validate_string_length($this->nimi,3); # Korkeintaan kolmen pituinen
+    }
+    
+    public function tarkista_tunnusluku(){
+        return BaseModel::validate_positive_integer($this->tunnusluku);
+    }
+    
+    public function tarkista_pituus(){
+        return BaseModel::validate_positive_integer($this->pituus);
+    }
+    
+    public function tarkista_paino(){
+        return BaseModel::validate_positive_integer($this->paino);
+    }
     public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Pokemon');
         $query->execute();
