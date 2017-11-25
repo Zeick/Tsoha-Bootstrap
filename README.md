@@ -1,8 +1,9 @@
-Projekti on nyt valmis vertaisarvioitavaksi viikolta 3.
+Olen lukenut viikolla 3 saamani vertaisarvioinnin.
 
 # Tietokantasovellukseni tietosivu
 * [Sovellus.](http://tjkarkka.users.cs.helsinki.fi/tsoha)
 * [Dokumentaatio.](https://github.com/Zeick/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
+* Sovellukseen voi kirjautua käyttäjätunnuksella 'admin' ja salasanalla 'pass1'.
 
 ## Työn aihe
 
@@ -12,9 +13,10 @@ Olen vainnut aiheeksi [valmiin aiheen joka on nimeltään Pokémontietokanta.](h
 * [Pokémon-lajilista](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji)
 * [Esimerkkilaji: Bulbasaur](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/1)
 * [Uuden lajin lisääminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/new)
+* [Esimerkkilajin muokkaaminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/1/edit)
+* [Sisäänkirjautuminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/login)
 
 ## Valmis ulkoasu (toiminnallisuus tulossa!)
-* [Lajin muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji_edit)
 * [Pokémon-liigalista](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga)
 * [Esimerkkiliiga](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga/1)
 * [Liigan muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga_edit)
