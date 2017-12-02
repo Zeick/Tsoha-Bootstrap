@@ -1,5 +1,7 @@
 Olen lukenut viikolla 3 saamani vertaisarvioinnin.
 
+## Työ on valmis viikon 5 vertaisarviointia varten (2.12.2017 klo 12.00)
+
 # Tietokantasovellukseni tietosivu
 * [Sovellus.](http://tjkarkka.users.cs.helsinki.fi/tsoha)
 * [Dokumentaatio.](https://github.com/Zeick/Tsoha-Bootstrap/tree/master/doc/dokumentaatio.pdf)
