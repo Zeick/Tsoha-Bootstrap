@@ -17,7 +17,7 @@ Olen vainnut aiheeksi [valmiin aiheen joka on nimeltään Pokémontietokanta.](h
 * [Uuden lajin lisääminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/new)
 * [Esimerkkilajin muokkaaminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/1/edit)
 * [Sisäänkirjautuminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/login)
-* [Uloskirjautuminen]((http://tjkarkka.users.cs.helsinki.fi/tsoha/logout)
+* [Uloskirjautuminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/logout)
 * [Pokémon-lista](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke)
 * [Esimerkkipokémonin muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke/4/edit)
 * [Esimerkkipokémon: Parax](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke/4)
