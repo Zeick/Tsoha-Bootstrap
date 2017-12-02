@@ -14,6 +14,7 @@ CREATE TABLE Kouluttaja(
 );
 
 CREATE TABLE OmaPokemon(
+    id SERIAL PRIMARY KEY,
     atk INTEGER,
     def INTEGER,
     speed INTEGER,
@@ -24,6 +25,7 @@ CREATE TABLE OmaPokemon(
     sukupuoli varchar(1),
     lempinimi varchar(20),
     esine varchar(20),
+    kuvaus varchar(1000),
     pid INTEGER REFERENCES Pokemon(tunnusluku),
     kid varchar(20) REFERENCES Kouluttaja(nimi)
 );

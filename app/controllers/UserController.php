@@ -4,6 +4,7 @@ class UserController extends BaseController{
     public static function login(){
         View::make('suunnitelmat/login.html');
     }
+    
     public static function handle_login(){
         $params = $_POST;
         $user = User::authenticate($params['username'], $params['password']);
@@ -14,4 +15,10 @@ class UserController extends BaseController{
             Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $user->nimi));
         }
     }
+    
+    public static function logout(){
+        $_SESSION['user'] = null;
+        Redirect::to('/login', array('message' => 'Olet nyt kirjautunut ulos PokéKannasta.'));
+    }
+    
 }

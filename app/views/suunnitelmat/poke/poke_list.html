@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-{% if user_logged_in %}
-    <h2>Käyttäjä {{user_logged_in.nimi}} on kirjautunut sisään :-)</h2>
-{% else %}
-<h2>Et ole kirjautunut :-(</h2>
-{% endif %}
 <h1>Pokémonit</h1>
-
+<p>Kouluttajan nimeä napsauttamalla listataan vain kyseisen kouluttajan omistamat Pokémonit.</p>
+<p>Pokémon-lajia napsauttamalla listataan vain kyseisen lajin Pokémonit.</p>
+<p>Lempinimeä napsauttamalla pääset Pokémonin esittelysivulle.</p>
 <p>
     <a href="{{base_path}}/poke/new" class="btn btn-success">Lisää uusi Pokémon joukkueeseesi</a>
 </p>
@@ -26,6 +23,7 @@
             <th>Lv</th>
             <th>Sukupuoli</th>
             <th>Esine</th>
+            <th>Toiminnot</th>
         </tr>
     </thead>
 
@@ -34,7 +32,7 @@
         <tr>
             <td><a href="{{base_path}}/poke/p/{{p.pid}}">{{p.pid}}</a></td>
             <td><a href="{{base_path}}/poke/k/{{p.kid}}">{{p.kid}}</a></td>
-            <td>{{p.lempinimi}}</td>
+            <td><a href="{{base_path}}/poke/{{p.id}}">{{p.lempinimi}}</a></td>
             <td>{{p.atk}}</td>
             <td>{{p.def}}</td>
             <td>{{p.speed}}</td>
@@ -44,6 +42,14 @@
             <td>{{p.lvl}}</td>
             <td>{{p.sukupuoli}}</td>
             <td>{{p.esine}}</td>
+            <td>
+                <a href="{{base_path}}/poke/{{p.id}}/edit">
+                    <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
+                </a>
+                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;">
+                    <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

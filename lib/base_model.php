@@ -21,7 +21,8 @@
             $errors[] = "Tyhjä nimi on kielletty!";
         }
         if(strlen($string) < $length){
-            $errors[] = "Nimen pitää olla vähintään kolme merkkiä pitkä!";
+            $errors[] = "Nimen pitää olla vähintään "
+                    . $length . " merkkiä pitkä!";
         }
         return $errors;
     }

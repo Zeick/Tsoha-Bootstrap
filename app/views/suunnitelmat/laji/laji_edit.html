@@ -10,14 +10,14 @@
       </ul>
     </div>
   {% endif %}
-<form method="post" action="{{base_path}}/laji/{{attributes.id}}/edit">
+<form method="post" action="{{base_path}}/laji/{{attributes.tunnusluku}}/edit">
     <div class="form-group">
         <label>Nimi (max. 20 merkkiä)</label>
         <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
     </div>
     <div class="form-group">
-        <label>Tunnusluku (kokonaisluku!)</label>
-        <input type="text" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
+<!--        <label>Tunnusluku (kokonaisluku!)</label>-->
+        <input type="hidden" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
     </div>
     <div class="form-group">
         <label>Pituus (cm, kokonaisluku!)</label>
@@ -32,7 +32,7 @@
         <textarea rows="5" name="kuvaus" class="form-control">{{attributes.kuvaus}}</textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Muokkaa Pokémonia!</button>
+        <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
     </div>
 </form>
 {% endblock %}

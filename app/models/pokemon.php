@@ -2,7 +2,7 @@
 
 class Pokemon extends BaseModel {
 
-    public $id, $nimi, $pituus, $paino, $kuvaus, $tunnusluku;
+    public $nimi, $pituus, $paino, $kuvaus, $tunnusluku;
 
     public function __construct($attributes) {
         parent::__construct($attributes);
@@ -10,7 +10,7 @@ class Pokemon extends BaseModel {
     }
 
     public function tarkista_nimi() {
-        return BaseModel::validate_string_length($this->nimi, 3); # Korkeintaan kolmen pituinen
+        return BaseModel::validate_string_length($this->nimi, 3); # Vähintään kolmen pituinen
     }
 
     public function tarkista_tunnusluku() {
@@ -32,7 +32,6 @@ class Pokemon extends BaseModel {
         $pokemonit = array();
         foreach ($rows as $row) {
             $pokemonit[] = new Pokemon(array(
-                'id' => $row['id'],
                 'tunnusluku' => $row['tunnusluku'],
                 'nimi' => $row['nimi'],
                 'pituus' => $row['pituus'],
@@ -43,12 +42,12 @@ class Pokemon extends BaseModel {
         return $pokemonit;
     }
 
-    public static function find($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Pokemon WHERE id = :id LIMIT 1');
-        $query->execute(array('id' => $id));
+    public static function find($tunnusluku) {
+        $query = DB::connection()->prepare('SELECT * FROM Pokemon WHERE tunnusluku = :tunnusluku LIMIT 1');
+        $query->execute(array('tunnusluku' => $tunnusluku));
         $row = $query->fetch();
         if ($row) {
-            $poke = new Pokemon(array('id' => $row['id'],
+            $poke = new Pokemon(array(
                 'nimi' => $row['nimi'],
                 'pituus' => $row['pituus'],
                 'paino' => $row['paino'],
@@ -62,7 +61,7 @@ class Pokemon extends BaseModel {
 
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO Pokemon (tunnusluku, nimi, pituus, paino, kuvaus) '
-                . 'VALUES (:tunnusluku, :nimi, :pituus, :paino, :kuvaus) RETURNING id');
+                . 'VALUES (:tunnusluku, :nimi, :pituus, :paino, :kuvaus)');
         $query->execute(array(
             'nimi' => $this->nimi,
             'tunnusluku' => $this->tunnusluku,
@@ -70,16 +69,15 @@ class Pokemon extends BaseModel {
             'paino' => $this->paino,
             'kuvaus' => $this->kuvaus
         ));
-        $row = $query->fetch();
-        $this->id = $row['id'];
+//        $row = $query->fetch();
+//        $this->tunnusluku = $row['tunnusluku'];
     }
 
     public function update() {
         $query = DB::connection()->prepare('UPDATE Pokemon SET '
-                . 'tunnusluku = :tunnusluku, nimi = :nimi, pituus = :pituus, paino = :paino, kuvaus = :kuvaus '
-                . 'WHERE id = :id');
+                . 'nimi = :nimi, pituus = :pituus, paino = :paino, kuvaus = :kuvaus '
+                . 'WHERE tunnusluku = :tunnusluku');
         $query->execute(array(
-            'id' => $this->id,
             'nimi' => $this->nimi,
             'tunnusluku' => $this->tunnusluku,
             'pituus' => $this->pituus,
@@ -92,9 +90,9 @@ class Pokemon extends BaseModel {
 
     public function destroy() {
         $query = DB::connection()->prepare('DELETE FROM Pokemon '
-                . 'WHERE id = :id');
+                . 'WHERE tunnusluku = :tunnusluku');
         $query->execute(array(
-            'id' => $this->id,
+            'tunnusluku' => $this->tunnusluku,
         ));
     }
 

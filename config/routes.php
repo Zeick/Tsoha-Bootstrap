@@ -8,6 +8,7 @@ $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 });
 
+// OmaPokémon-reitit
 $routes->get('/poke', function() {
     OmaPokemonController::index();
 });
@@ -17,10 +18,32 @@ $routes->get('/poke/k/:kid', function($kid) {
 $routes->get('/poke/p/:pid', function($pid) {
     OmaPokemonController::showByPokemon($pid);
 });
-
-$routes->get('/poke_edit', function() {
-    HelloWorldController::poke_edit();
+$routes->get('/poke/new', function() {
+    OmaPokemonController::newPokemon();
 });
+$routes->post('/poke', function() {
+    OmaPokemonController::store();
+});
+
+$routes->get('/poke/:id/edit', function($id) {
+    OmaPokemonController::edit($id);
+});
+$routes->post('/poke/:id/edit', function($id) {
+    OmaPokemonController::update($id);
+});
+
+$routes->post('/poke/:id/destroy', function($id) {
+    OmaPokemonController::destroy($id);
+});
+$routes->get('/poke/:id', function($id) {
+    OmaPokemonController::show($id);
+});
+
+$routes->post('/poke', function() {
+    OmaPokemonController::store();
+});
+
+// Kouluttaja-reitit
 $routes->get('/kouluttaja', function() {
     HelloWorldController::kouluttaja_list();
 });
@@ -30,6 +53,8 @@ $routes->get('/kouluttaja/1', function() {
 $routes->get('/kouluttaja_edit', function() {
     HelloWorldController::kouluttaja_edit();
 });
+
+// Liiga-reitit
 $routes->get('/liiga', function() {
     HelloWorldController::liiga_list();
 });
@@ -39,6 +64,8 @@ $routes->get('/liiga/1', function() {
 $routes->get('/liiga_edit', function() {
     HelloWorldController::liiga_edit();
 });
+
+// Laji-reitit
 $routes->get('/laji', function() {
     PokemonController::index();
 });
@@ -66,10 +93,16 @@ $routes->post('/laji/:id/destroy', function($id) {
     PokemonController::destroy($id);
 });
 
-$routes->get('/login', function(){
+
+// Kirjautumisreitit
+$routes->get('/login', function() {
     UserController::login();
 });
-$routes->post('/login', function(){
+$routes->post('/login', function() {
     UserController::handle_login();
+});
+
+$routes->post('/logout', function() {
+    UserController::logout();
 });
 

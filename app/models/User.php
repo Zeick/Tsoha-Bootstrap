@@ -8,6 +8,20 @@ class User extends BaseModel {
         parent::__construct($attributes);
     }
     
+    public static function all(){
+        $query = DB::connection()->prepare('SELECT * FROM Kouluttaja');
+        $query->execute();
+        $rows = $query->fetchAll();
+        $kouluttajat = array();
+        foreach($rows as $row){
+            $kouluttajat[] = new User(array(
+                'nimi' => $row['nimi'],
+                'salasana' => $row['salasana']
+            ));
+        }
+        return $kouluttajat;
+    }
+    
     public static function find($nimi) {
         $query = DB::connection()->prepare('SELECT * FROM Kouluttaja WHERE nimi = :nimi LIMIT 1');
         $query->execute(array('nimi' => $nimi));

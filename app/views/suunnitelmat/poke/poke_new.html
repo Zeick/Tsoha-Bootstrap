@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 {% if errors %}
+<h1>Lisää uusi Pokémon</h1>
 <div class="alert alert-danger">
-    <p><b>Oman Pokémonisi muokkaaminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
+    <p><b>Oman Pokémonisi lisääminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
     <ul>
         {% for error in errors %}
         <li>{{error}}</li>
@@ -11,13 +12,7 @@
 </div>
 {% endif %}
 <p>Huomaa, että Lv, HP, Atk, Def, Speed, SpAtk ja SpDef vaativat kokonaislukuarvoja.</p>
-<form method="post" action="{{base_path}}/poke/{{attributes.id}}/edit">
-    <!--    <div class="checkbox">
-          <label>
-            <input type="checkbox">
-            Aktiivinen taistelija
-          </label>
-        </div> -->
+<form method="post" action="{{base_path}}/poke">
     <div class="form-group">
         <label>Lempinimi (max. 20 merkkiä)</label>
         <input type="text" name="lempinimi" class="form-control" value="{{attributes.lempinimi}}">
@@ -79,7 +74,6 @@
         </select>
         <!--        <input type="text" name="kid" class="form-control" value="{{attributes.kid}}">-->
     </div>
-
     <div class="form-group">
         <label>Kuvaus (max. 2000 merkkiä)</label>
         <textarea rows="5" name="kuvaus" class="form-control">
@@ -87,7 +81,7 @@
         </textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
+        <button type="submit" class="btn btn-primary">Lisää uusi oma Pokémon!</button>
     </div>
 </form>
 {% endblock %}

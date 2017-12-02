@@ -8,7 +8,8 @@
   <h1>{{poke.nimi}} (#{{poke.tunnusluku}})</h1>
   <!-- Painikkeet tähän -->
   <p>
-    <button class="btn btn-danger">Poista</button> <a href="{{base_path}}/laji/{{poke.id}}/edit" class="btn btn-default">Muokkaa</a>
+      <a href="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" class="btn btn-danger">Poista</a>
+    <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit" class="btn btn-default">Muokkaa</a>
   </p>
   <!-- Tiedot tulee listana tähän -->
   <ul>
