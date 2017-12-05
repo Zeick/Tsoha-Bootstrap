@@ -10,7 +10,8 @@ CREATE TABLE Pokemon(
 
 CREATE TABLE Kouluttaja(
     nimi varchar(20) PRIMARY KEY,
-    salasana varchar(20)
+    salasana varchar(20),
+    kuvaus varchar(1000)
 );
 
 CREATE TABLE OmaPokemon(
@@ -37,5 +38,5 @@ CREATE TABLE Liiga(
 
 CREATE TABLE Jasenyys(
     jasen varchar(20) REFERENCES Kouluttaja(nimi),
-    liiganimi varchar(20) REFERENCES Liiga(nimi) 
+    nimi varchar(20) REFERENCES Liiga(nimi) 
 );

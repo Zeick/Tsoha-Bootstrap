@@ -11,7 +11,7 @@ class OmaPokemon extends BaseModel {
     }
 
     public function tarkista_lempinimen_pituus() {
-        return BaseModel::validate_string_length($this->lempinimi, 1);
+        return BaseModel::validate_string_maxlength($this->lempinimi, 1,20);
     }
 
     public function tarkista_sukupuoli() {

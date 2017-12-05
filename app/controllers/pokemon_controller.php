@@ -13,7 +13,8 @@ class PokemonController extends BaseController {
     public static function show($id) {
         self::check_logged_in();
         $poke = Pokemon::find($id);
-        View::make('suunnitelmat/laji/laji_show.html', array('poke' => $poke));
+        $kaikki = OmaPokemon::findByPokemon($id);
+        View::make('suunnitelmat/laji/laji_show.html', array('poke' => $poke, 'kaikki' => $kaikki));
     }
 
     // Uuden Pokémon-lajin luontilomakesivun generointi

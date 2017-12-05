@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Rekisteröidy</h1>
+{% if errors %}
+<div class="alert alert-danger">
+    <p><b>Rekisteröityminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
+    <ul>
+        {% for error in errors %}
+        <li>{{error}}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+<form method="post" action="{{base_path}}/kouluttaja">
+    <div class="form-group">
+        <label>Käyttäjätunnus (max. 20 merkkiä)</label>
+        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
+    </div>
+    <div class="form-group">
+        <label>Salasana (max. 20 merkkiä)</label>
+        <input type="password" name="salasana" class="form-control">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Rekisteröidy!</button>
+    </div>
+</form>
+{% endblock %}

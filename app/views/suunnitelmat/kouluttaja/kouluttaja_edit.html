@@ -1,24 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa Käyttäjää Tom Aatti</h1>
+<h1>Muokkaa käyttäjätietojasi, {{user_logged_in.nimi}}</h1>
 
-  <form>
+<form method="post" action="{{base_path}}/kouluttaja/{{user_logged_in.nimi}}/edit">
+    <!--    <div class="form-group">
+          <label>Lempipokémon</label>
+          <input type="text" class="form-control" value="Sipuli">
+        </div>
+        <div class="form-group">
+          <label>Liiga</label> <button type="submit" class="btn btn-danger">Eroa liigasta</button>
+          <input type="text" class="form-control" value="Indigo">
+        </div>
+    
+        <div class="form-group">
+          <label>Kerro jotakin itsestäsi:</label>
+          <textarea class="form-control">Olen kymmenenvuotias tomaatti, joka pitää kasviksista. Siksi käytän pääasiassa ruohopokémoneja. Erityisesti Kannabishiksi nimeämäni Oddish on lähellä sydäntäni.
+          </textarea>
+        </div> -->
     <div class="form-group">
-      <label>Lempipokémon</label>
-      <input type="text" class="form-control" value="Sipuli">
+        <input type="hidden" name="nimi" value="{{user_logged_in.nimi}}">
+        <label>Vaihda salasana</label>
+        <input type="password" name="salasana" value="{{user_logged_in.salasana}}" class="form-control">
     </div>
     <div class="form-group">
-      <label>Liiga</label> <button type="submit" class="btn btn-danger">Eroa liigasta</button>
-      <input type="text" class="form-control" value="Indigo">
-    </div>
-
-    <div class="form-group">
-      <label>Kerro jotakin itsestäsi:</label>
-      <textarea class="form-control">Olen kymmenenvuotias tomaatti, joka pitää kasviksista. Siksi käytän pääasiassa ruohopokémoneja. Erityisesti Kannabishiksi nimeämäni Oddish on lähellä sydäntäni.
-      </textarea>
+        <label>Kerro jotain itsestäsi! (Max. 1000 merkkiä)</label>
+        <textarea rows="5" name="kuvaus" class="form-control">
+            {{attributes.kuvaus}}
+        </textarea>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Tallenna</button>
+        <button type="submit" class="btn btn-primary">Tallenna</button>
     </div>
-  </form>
+</form>
 {% endblock %}

@@ -5,19 +5,70 @@
     {{message}}
 </div>
 {% endif %}
-  <h1>{{poke.nimi}} (#{{poke.tunnusluku}})</h1>
-  <!-- Painikkeet tähän -->
-  <p>
-      <a href="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" class="btn btn-danger">Poista</a>
-    <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit" class="btn btn-default">Muokkaa</a>
-  </p>
-  <!-- Tiedot tulee listana tähän -->
-  <ul>
-      <li><strong>Pituus: </strong> {{poke.pituus}} cm</li>
+<h1>{{poke.nimi}} (#{{poke.tunnusluku}})</h1>
+<!-- Painikkeet tähän -->
+<form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+<a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit" class="btn btn-default">Muokkaa</a>
+
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Pituus: </strong> {{poke.pituus}} cm</li>
     <li><strong>Paino: </strong> {{poke.paino}} kg</li>  
-  </ul>
-  <!-- Kuvaus tulee tähän -->
-  <p>
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
     {{poke.kuvaus}}
-  </p>
+</p>
+<h2>Tietokannassa olevat {{poke.nimi}}-Pokémonit</h2>
+{% if kaikki %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Kouluttaja</th>
+            <th>Lempinimi</th>
+            <th>Atk</th>
+            <th>Def</th>
+            <th>Speed</th>
+            <th>SpAtk</th>
+            <th>SpDef</th>
+            <th>HP</th>
+            <th>Lv</th>
+            <th>Sukupuoli</th>
+            <th>Esine</th>
+            <th>Toiminnot</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in kaikki %}
+        <tr>
+            <td><a href="{{base_path}}/kouluttaja/{{p.kid}}">{{p.kid}}</a></td>
+            <td><a href="{{base_path}}/poke/{{p.id}}">{{p.lempinimi}}</a></td>
+            <td>{{p.atk}}</td>
+            <td>{{p.def}}</td>
+            <td>{{p.speed}}</td>
+            <td>{{p.spatk}}</td>
+            <td>{{p.spdef}}</td>
+            <td>{{p.hp}}</td>
+            <td>{{p.lvl}}</td>
+            <td>{{p.sukupuoli}}</td>
+            <td>{{p.esine}}</td>
+            <td>
+                {% if p.kid == user_logged_in.nimi %}
+                <a href="{{base_path}}/poke/{{p.id}}/edit">
+                    <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
+                </a>
+                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;">
+                    <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Tietokannassa ei ole vielä yhtään {{poke.nimi}}-Pokémonia.</p>
+{% endif %}
 {% endblock %}

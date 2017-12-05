@@ -27,6 +27,22 @@
         return $errors;
     }
     
+    public function validate_string_maxlength($string, $minlen, $maxlen){
+        $errors = array();
+        if($string == "" || $string == null){
+            $errors[] = "Tyhjä nimi on kielletty!";
+        }
+        if(strlen($string) < $minlen){
+            $errors[] = "Nimen pitää olla vähintään "
+                    . $minlen . " merkkiä pitkä!";
+        }
+        if(strlen($string) > $maxlen){
+            $errors[] = "Nimen pitää olla korkeintaan "
+                    . $maxlen . " merkkiä pitkä!";
+        }
+        return $errors;
+    }
+    
     public function validate_positive_integer($luku){
         $errors = array();
         if(!ctype_digit($luku)){

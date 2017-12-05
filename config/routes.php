@@ -39,19 +39,33 @@ $routes->get('/poke/:id', function($id) {
     OmaPokemonController::show($id);
 });
 
-$routes->post('/poke', function() {
-    OmaPokemonController::store();
-});
-
 // Kouluttaja-reitit
 $routes->get('/kouluttaja', function() {
-    HelloWorldController::kouluttaja_list();
+    UserController::index();
 });
-$routes->get('/kouluttaja/1', function() {
-    HelloWorldController::kouluttaja_show();
+
+$routes->get('/kouluttaja/new', function(){
+    UserController::newKouluttaja();
 });
-$routes->get('/kouluttaja_edit', function() {
-    HelloWorldController::kouluttaja_edit();
+
+$routes->post('/kouluttaja', function() {
+    UserController::store();
+});
+
+$routes->get('/kouluttaja/:id/edit', function($id) {
+    UserController::edit($id);
+});
+
+$routes->post('/kouluttaja/:id/edit', function($id) {
+    UserController::update($id);
+});
+
+$routes->post('/kouluttaja/:id/destroy', function($id){
+    UserController::destroy($id); 
+});
+
+$routes->get('/kouluttaja/:id', function($id) {
+    UserController::show($id);
 });
 
 // Liiga-reitit

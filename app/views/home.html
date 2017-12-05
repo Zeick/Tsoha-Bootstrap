@@ -1,15 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
 {% if message %}
 <div class="alert alert-success">
     {{message}}
 </div>
-{% endif %}
-{% if user_logged_in %}
-    <h2>Käyttäjä {{user_logged_in.nimi}} on kirjautunut sisään :-)</h2>
-{% else %}
-<h2>Et ole kirjautunut :-(</h2>
 {% endif %}
 <div class="page-header">
     <h1>Tervetuloa Pokémon-tietokantaan!</h1>
@@ -18,31 +12,19 @@
     <a href="https://github.com/Zeick/Tsoha-Bootstrap" class="btn btn-primary btn-lg">GitHub-lähdekoodi <span class="glyphicon glyphicon-chevron-right"></span></a>
 </p>
 
-<p>Sivusto on vielä rakenteilla. Pokémon-lajien lisääminen/muokkaaminen/listaaminen/poistaminen tietokantaan onnistuu jo.</p>
-<p>
-    <a href="laji" class="btn btn-primary btn-lg">Pokémon-lajit <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="laji/1" class="btn btn-primary btn-lg">Esimerkkilaji: Bulbasaur <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="laji/new" class="btn btn-primary btn-lg">Lisää uusi Pokémon! <span class="glyphicon glyphicon-chevron-right"></span></a>
-</p>
-<p>Sisäänkirjautuminen onnistuu. Pääkäyttäjätunnus on 'admin'.</p>
-<p>
-    <a href="login" class="btn btn-primary btn-lg">Sisäänkirjautuminen <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="laji/1/edit" class="btn btn-primary btn-lg">Muokkaa Bulbasaur-lajia <span class="glyphicon glyphicon-chevron-right"></span></a>
-</p>
-<h3>Huom: näissä ei ole vielä toiminnallisuutta. Ne ovat esimakua tulevasta...</h3>
-<p>
-    <a href="liiga" class="btn btn-primary btn-lg">Pokémon-liigat <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="liiga/1" class="btn btn-primary btn-lg">Esimerkkiliiga <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="liiga_edit" class="btn btn-primary btn-lg">Esimerkkiliigan editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-</p>
-<p>
-    <a href="kouluttaja" class="btn btn-primary btn-lg">Kouluttajat <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="kouluttaja/1" class="btn btn-primary btn-lg">Esimerkkikouluttaja <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="kouluttaja_edit" class="btn btn-primary btn-lg">Esimerkkikouluttajan editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-</p>
-<p>
-    <a href="poke" class="btn btn-primary btn-lg">Esimerkkikäyttäjän pokémonit <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="poke/1" class="btn btn-primary btn-lg">Esimerkkipokémon <span class="glyphicon glyphicon-chevron-right"></span></a>
-    <a href="poke_edit" class="btn btn-primary btn-lg">Esimerkkipokémonin editointisivu <span class="glyphicon glyphicon-chevron-right"></span></a>
-</p>
+<p>Sivusto on vielä rakenteilla. Voit kirjautua sisään käyttäjätunnuksella 'admin', salasana 'pass1'.</p>
+<h3>Valmis toiminnallisuus</h3>
+<ul>
+    <li>Pokémon-lajien lisääminen, poistaminen, listaaminen ja tuhoaminen.</li>
+    <li>Omien Pokémonien lisääminen, poistaminen, listaaminen ja tuhoaminen.</li>
+    <li>Rekisteröityminen, sisäänkirjautuminen, salasanan vaihtaminen ja tunnuksen poistaminen.</li>
+    <li>Kouluttajan omien Pokémonien listaaminen esittelysivulla</li>
+    <li>Pokémon-lajien yksilöiden listaaminen esittelysivulla</li>
+</ul>
+<h3>Ei vielä valmis toiminnallisuus</h3>
+<ul>
+    <li>Pokémon-liigojen lisääminen, poistaminen, listaaminen ja tuhoaminen (esittelysivut näkyvissä).</li>
+    <li>Käyttäjän liittyminen Pokémon-liigaan</li>
+</ul>
+
 {% endblock %}

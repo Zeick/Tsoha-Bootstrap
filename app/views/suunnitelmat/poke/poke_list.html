@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Pokémonit</h1>
-<p>Kouluttajan nimeä napsauttamalla listataan vain kyseisen kouluttajan omistamat Pokémonit.</p>
-<p>Pokémon-lajia napsauttamalla listataan vain kyseisen lajin Pokémonit.</p>
+<p>Kouluttajan nimeä napsauttamalla pääset kouluttajan esittelysivulle.</p>
+<p>Pokémon-lajia napsauttamalla pääset lajin esittelysivulle.</p>
 <p>Lempinimeä napsauttamalla pääset Pokémonin esittelysivulle.</p>
 <p>
     <a href="{{base_path}}/poke/new" class="btn btn-success">Lisää uusi Pokémon joukkueeseesi</a>
@@ -30,8 +30,8 @@
     <tbody>
         {% for p in kaikki %}
         <tr>
-            <td><a href="{{base_path}}/poke/p/{{p.pid}}">{{p.pid}}</a></td>
-            <td><a href="{{base_path}}/poke/k/{{p.kid}}">{{p.kid}}</a></td>
+            <td><a href="{{base_path}}/laji/{{p.pid}}">{{p.pid}}</a></td>
+            <td><a href="{{base_path}}/kouluttaja/{{p.kid}}">{{p.kid}}</a></td>
             <td><a href="{{base_path}}/poke/{{p.id}}">{{p.lempinimi}}</a></td>
             <td>{{p.atk}}</td>
             <td>{{p.def}}</td>
@@ -43,12 +43,14 @@
             <td>{{p.sukupuoli}}</td>
             <td>{{p.esine}}</td>
             <td>
+                {% if p.kid == user_logged_in.nimi %}
                 <a href="{{base_path}}/poke/{{p.id}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>
                 <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

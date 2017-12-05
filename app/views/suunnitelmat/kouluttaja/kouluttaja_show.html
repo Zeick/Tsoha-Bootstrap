@@ -1,17 +1,75 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Tom Aatti<button class="btn btn-success">Liigajohtaja</button></h1>
-  <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">Poista</button> <a href="#" class="btn btn-default">Muokkaa</a>
-  </p>
-  <!-- Tiedot tulee listana tähän -->
-  <ul>
-    <li><strong>Lempipokémon:</strong> Sipuli
-    <li><strong>Liiga:</strong> Indigo <label class="label label-danger">Johtaja</label></li>
-  </ul>
-  <!-- Kuvaus tulee tähän -->
-  <p>
-    Olen kymmenenvuotias tomaatti, joka pitää kasviksista. Siksi käytän pääasiassa ruohopokémoneja. Erityisesti Kannabishiksi nimeämäni Oddish on lähellä sydäntäni.
-  </p>
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+<h1>{{kouluttaja.nimi}} <button class="btn btn-success">Kouluttaja </button></h1>
+<!-- Painikkeet tähän -->
+<p>
+    <a href="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/destroy" class="btn btn-danger">Poista</a>
+    <a href="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/edit" class="btn btn-default">Muokkaa</a>
+</p>
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Lempipokémon:</strong> 
+    <li><strong>Liiga:</strong>  <label class="label label-danger">Jäsen</label></li>
+</ul>
+
+<h2>Kouluttajan omat Pokémonit</h2>
+{% if poket %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Laji (nro)</th>
+            <th>Lempinimi</th>
+            <th>Atk</th>
+            <th>Def</th>
+            <th>Speed</th>
+            <th>SpAtk</th>
+            <th>SpDef</th>
+            <th>HP</th>
+            <th>Lv</th>
+            <th>Sukupuoli</th>
+            <th>Esine</th>
+            <th>Toiminnot</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for p in poket %}
+        <tr>
+            <td><a href="{{base_path}}/laji/{{p.pid}}">{{p.pid}}</a></td>
+            <td><a href="{{base_path}}/poke/{{p.id}}">{{p.lempinimi}}</a></td>
+            <td>{{p.atk}}</td>
+            <td>{{p.def}}</td>
+            <td>{{p.speed}}</td>
+            <td>{{p.spatk}}</td>
+            <td>{{p.spdef}}</td>
+            <td>{{p.hp}}</td>
+            <td>{{p.lvl}}</td>
+            <td>{{p.sukupuoli}}</td>
+            <td>{{p.esine}}</td>
+            <td>
+                {% if p.kid == user_logged_in.nimi %}
+                <a href="{{base_path}}/poke/{{p.id}}/edit">
+                    <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
+                </a>
+                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;">
+                    <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Kouluttajalla ei ole vielä omia Pokémoneja!</p>
+{% endif %}
+<!-- Kuvaus tulee tähän -->
+<p>
+    {{kouluttaja.kuvaus}}
+</p>
 {% endblock %}
