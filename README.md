@@ -12,23 +12,15 @@ Olen lukenut viikolla 3 saamani vertaisarvioinnin.
 Olen vainnut aiheeksi [valmiin aiheen joka on nimeltään Pokémontietokanta.](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
 
 ## Valmis toiminnallisuus
-* [Pokémon-lajilista](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji)
-* [Esimerkkilaji: Bulbasaur](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/1)
-* [Uuden lajin lisääminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/new)
-* [Esimerkkilajin muokkaaminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/laji/1/edit)
-* [Sisäänkirjautuminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/login)
-* [Uloskirjautuminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/logout)
-* [Pokémon-lista](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke)
-* [Esimerkkipokémonin muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke/4/edit)
-* [Esimerkkipokémon: Parax](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke/4)
-* [Uuden Pokémonin lisääminen](http://tjkarkka.users.cs.helsinki.fi/tsoha/poke/new)
+* Pokémon-lajien lisääminen, muokkaaminen, listaaminen ja tuhoaminen.
+* Omien Pokémonien lisääminen, muokkaaminen, listaaminen ja tuhoaminen.
+* Rekisteröityminen, sisäänkirjautuminen, uloskirjautuminen, salasanan vaihtaminen ja tunnuksen poistaminen.
+* Kouluttajan omien Pokémonien listaaminen esittelysivulla
+* Pokémon-lajien yksilöiden listaaminen esittelysivulla
+* Lomakkeiden validointi
 
-Lomakkeet on validoitu ja Pokémoneja ja Pokémon-lajeja voi poistaa.
-
-## Valmis ulkoasu (toiminnallisuus tulossa!)
-* [Pokémon-liigalista](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga)
-* [Esimerkkiliiga](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga/1)
-* [Liigan muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/liiga_edit)
-* [Pokémon-kouluttajalista](http://tjkarkka.users.cs.helsinki.fi/tsoha/kouluttaja)
-* [Esimerkkikouluttaja](http://tjkarkka.users.cs.helsinki.fi/tsoha/kouluttaja/1)
-* [Kouluttajan muokkaussivu](http://tjkarkka.users.cs.helsinki.fi/tsoha/kouluttaja_edit)
+## Ei vielä valmis (toiminnallisuus tulossa!)
+* Pokémon-liigojen lisääminen, listaaminen ja tuhoaminen (esittelysivut näkyvissä)
+* Liigajäsenyyksien lisääminen, poistaminen ja listaaminen
+* Pokémon-lajin tuhoamisessa on kaikki siihen liittyvät yksilöt myös tuhottava
+* Käyttäjä voi valita lempipokémonin
