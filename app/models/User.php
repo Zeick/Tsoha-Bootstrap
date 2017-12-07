@@ -74,8 +74,8 @@ class User extends BaseModel {
         ));
     }
 
-    // Käyttäjän poistaminen tietokannasta (EI TOIMI VIELÄ!)
-    // TODO: Kun käyttäjä poistetaan, on kaikki siihen liittyvät OmaPokemonit poistettava!
+    // Käyttäjän poistaminen tietokannasta
+    // Kun käyttäjä poistetaan, on kaikki siihen liittyvät OmaPokemonit poistettava!
     public function destroy() {
         $query0 = DB::connection()->prepare('DELETE FROM OmaPokemon WHERE kid = :kid');
         $query0->execute(array('kid' => $this->nimi));
@@ -83,7 +83,7 @@ class User extends BaseModel {
         $query->execute(array('nimi' => $this->nimi));
     }
 
-    // TODO: Salasanan vaihtaminen
+    // Käyttäjän tietojen päivittäminen: salasana ja kuvaus
     public function update() {
         $query = DB::connection()->prepare('UPDATE Kouluttaja SET '
                 . 'salasana = :salasana, kuvaus = :kuvaus WHERE nimi = :nimi');

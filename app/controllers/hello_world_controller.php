@@ -31,7 +31,7 @@ class HelloWorldController extends BaseController {
         Kint::dump($errors);
     }
 
-    public static function poke_list() {
+/*    public static function poke_list() {
         View::make('suunnitelmat/poke/poke_list.html');
     }
 
@@ -81,6 +81,6 @@ class HelloWorldController extends BaseController {
 
     public static function laji_edit() {
         View::make('suunnitelmat/laji/laji_edit.html');
-    }
+    } */
 
 }

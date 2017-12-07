@@ -88,7 +88,11 @@ class Pokemon extends BaseModel {
 //        $this->id = $row['id'];
     }
 
+    // Pokémon-lajin poistaminen tietokannasta
+    // Kun laji poistetaan, on kaikki siihen liittyvät OmaPokemonit poistettava!
     public function destroy() {
+        $query0 = DB::connection()->prepare('DELETE FROM OmaPokemon WHERE pid = :pid');
+        $query0->execute(array('pid' => $this->tunnusluku));
         $query = DB::connection()->prepare('DELETE FROM Pokemon '
                 . 'WHERE tunnusluku = :tunnusluku');
         $query->execute(array(

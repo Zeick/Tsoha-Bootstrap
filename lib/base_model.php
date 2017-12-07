@@ -15,6 +15,21 @@
       }
     }
     
+    public function validate_same_name($dbname, $dbrow, $objectname){
+        $errors = array();
+        $query = DB::connection()->prepare('SELECT * FROM Liiga WHERE nimi = :objectname LIMIT 1');
+        $query->execute(array(
+//            'dbname' => $dbname,
+//            'dbrow' => $dbrow,
+            'objectname' => $objectname
+        ));
+        $row = $query->fetch();
+        if($row){
+            $errors[] = "Tietokannassa on jo käytössä nimi " . $objectname . "! Keksi uusi nimi.";
+        }
+        return $errors;
+    }
+    
     public function validate_string_length($string, $length){
         $errors = array();
         if($string == "" || $string == null){

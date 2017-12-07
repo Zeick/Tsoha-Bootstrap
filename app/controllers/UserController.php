@@ -24,14 +24,13 @@ class UserController extends BaseController {
 
     // Näyttää kaikki käyttäjät
     public static function index() {
-        self::check_logged_in();
         $kaikki = User::all();
-        View::make('suunnitelmat/kouluttaja/kouluttaja_list.html', array('kaikki' => $kaikki));
+        $lkm = count($kaikki);
+        View::make('suunnitelmat/kouluttaja/kouluttaja_list.html', array('kaikki' => $kaikki, 'lkm' => $lkm));
     }
 
     // Näyttää yksittäisen käyttäjän Pokémonit ja liigat
     public static function show($nimi) {
-        self::check_logged_in();
         $kouluttaja = User::find($nimi);
         $poket = OmaPokemon::findByTrainer($nimi);
         // Tähän käyttäjän liigojen haku!

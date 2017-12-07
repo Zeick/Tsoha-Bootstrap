@@ -7,7 +7,7 @@
 {% endif %}
 
 <h1>Pokémon-kouluttajat</h1>
-
+<h4>Kouluttajia yhteensä: {{lkm}}</h4>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -26,7 +26,7 @@
             <td></td>
             <td></td>
             <td>
-                {% if k.nimi == user_logged_in.nimi %}
+                {% if k.nimi == user_logged_in.nimi or user_logged_in.nimi == 'admin' %}
                 <a href="{{base_path}}/kouluttaja/{{k.nimi}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>

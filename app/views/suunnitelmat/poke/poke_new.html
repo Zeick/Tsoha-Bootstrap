@@ -51,7 +51,7 @@
             <input type="text" name="sukupuoli" class="form-control" value="{{attributes.sukupuoli}}">
         </div>
     </div>
-    
+
     <div class="form-group col-md-3">
         <label>Esine</label>
         <input type="text" name="esine" class="form-control" value="{{attributes.esine}}">
@@ -60,19 +60,23 @@
         <label>Pokémon-laji</label>
         <select class="form-control" name="pid">
             {% for laji in lajit %}
+            {% if attributes.pid == laji.tunnusluku %}
+            <option selected="selected" value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+            {% else %}
             <option value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+            {% endif %}
             {% endfor %}
         </select>
     </div>
-<!--    <div class="form-group">
-        <label>Kouluttajan nimi</label>
-        <select class="form-control" name="kid">
-            {% for k in kouluttajat %}
-            <option value="{{k.nimi}}">{{k.nimi}}</option>
-            {% endfor %}
-        </select>
-    </div> -->
-<!-- Tällä hetkellä kirjautuneen henkilön tunnus. Voi lisätä vain itselleen poksuja. -->
+    <!--    <div class="form-group">
+            <label>Kouluttajan nimi</label>
+            <select class="form-control" name="kid">
+                {% for k in kouluttajat %}
+                <option value="{{k.nimi}}">{{k.nimi}}</option>
+                {% endfor %}
+            </select>
+        </div> -->
+    <!-- Tällä hetkellä kirjautuneen henkilön tunnus. Voi lisätä vain itselleen poksuja. -->
     <div class="form-group">
         <input type="hidden" name="kid" value="{{user_logged_in.nimi}}">
         <label>Kuvaus (max. 2000 merkkiä)</label>

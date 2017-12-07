@@ -4,14 +4,15 @@ class PokemonController extends BaseController {
 
     // Hakee kaikki Pokémon-lajit tietokannasta listasivulle
     public static function index() {
-        self::check_logged_in();
+//        self::check_logged_in();
         $kaikki = Pokemon::all();
-        View::make('suunnitelmat/laji/laji_list.html', array('kaikki' => $kaikki));
+        $lkm = count($kaikki);
+        View::make('suunnitelmat/laji/laji_list.html', array('kaikki' => $kaikki, 'lkm' => $lkm));
     }
 
     // Näyttää yksittäisen Pokémon-lajin tiedot lajin sivulla
     public static function show($id) {
-        self::check_logged_in();
+//        self::check_logged_in();
         $poke = Pokemon::find($id);
         $kaikki = OmaPokemon::findByPokemon($id);
         View::make('suunnitelmat/laji/laji_show.html', array('poke' => $poke, 'kaikki' => $kaikki));

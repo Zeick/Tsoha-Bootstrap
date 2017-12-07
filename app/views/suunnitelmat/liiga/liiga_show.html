@@ -1,17 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Liiga Indigo <button class="btn btn-success">Jäsen</button></h1>
-  <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">Eroa liigasta</button> <a href="#" class="btn btn-default">Muokkaa</a>
-  </p>
-  <!-- Tiedot tulee listana tähän -->
-  <ul>
-    <li><strong>Liigajohtaja: </strong> Tom Aatti
-    <li><strong>Kouluttajia yhteensä:</strong> 2</li>
-  </ul>
-  <!-- Kuvaus tulee tähän -->
-  <p>
-    Tähän liigaan pääsee vain jos on syntynyt Kantossa. Johtossa syntyneet älkööt vaivautuko!
-  </p>
+{% if message %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endif %}
+<h1>{{liiga.nimi}}</h1>
+<!-- Painikkeet tähän -->
+<form method="post" action="{{base_path}}/liiga/{{liiga.nimi}}/destroy" style="display: inline-block">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
+{% if user_logged_in.nimi == liiga.johtaja %}
+<button class="btn btn-info">Liigajohtaja</button>
+{% else %}
+<form method="post" action="{{base_path}}/newjasenyys/{{liiga.nimi}}/jasen/{{user_logged_in.nimi}}">
+    <button type="submit" class="btn btn-primary">Eroa tai liity!</button>
+</form>
+{% endif %}
+<a href="{{base_path}}/liiga/{{liiga.nimi}}/edit" class="btn btn-default">Muokkaa liigaa</a>
+
+<!-- Tiedot tulee listana tähän -->
+<ul>
+    <li><strong>Liigajohtaja: </strong> {{liiga.johtaja}}
+    <li><strong>Jäsenet: </strong>
+        {% if jasenet %}
+        {{lkm}} kpl.
+        <ul>
+            {% for j in jasenet %}
+            <li>{{j.jasen}}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        Ei vielä jäseniä!
+        {% endif %}
+    </li>
+</ul>
+<!-- Kuvaus tulee tähän -->
+<p>
+    {{liiga.kuvaus}}
+</p>
 {% endblock %}

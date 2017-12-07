@@ -65,7 +65,11 @@
         <label>Pokémon-laji</label>
         <select class="form-control" name="pid">
             {% for laji in lajit %}
-            <option value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+                {% if attributes.pid == laji.tunnusluku %}
+                    <option selected="selected" value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+                {% else %}
+                    <option value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+                {% endif %}
             {% endfor %}
         </select>
  <!--       <input type="text" name="pid" class="form-control" value="{{attributes.pid}}">-->

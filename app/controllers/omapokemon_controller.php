@@ -4,28 +4,29 @@ class OmaPokemonController extends BaseController {
 
     // Näyttää kaikki OmaPokémonit
     public static function index() {
-        self::check_logged_in();
+//        self::check_logged_in();
         $kaikki = OmaPokemon::all();
-        View::make('suunnitelmat/poke/poke_list.html', array('kaikki' => $kaikki));
+        $lkm = count($kaikki);
+        View::make('suunnitelmat/poke/poke_list.html', array('kaikki' => $kaikki, 'lkm' => $lkm));
     }
 
     // Näyttää kaikki tietyn kouluttajan OmaPokémonit
     public static function showByTrainer($kid) {
-        self::check_logged_in();
+//        self::check_logged_in();
         $kaikki = OmaPokemon::findByTrainer($kid);
         View::make('suunnitelmat/poke/poke_list.html', array('kaikki' => $kaikki));
     }
 
     // Näyttää kaikki tietyn lajin OmaPokémonit
     public static function showByPokemon($pid) {
-        self::check_logged_in();
+//        self::check_logged_in();
         $kaikki = OmaPokemon::findByPokemon($pid);
         View::make('suunnitelmat/poke/poke_list.html', array('kaikki' => $kaikki));
     }
 
     // Näyttää yksittäisen OmaPokemonin tiedot
     public static function show($id) {
-        self::check_logged_in();
+//        self::check_logged_in();
         $poke = OmaPokemon::find($id);
         View::make('suunnitelmat/poke/poke_show.html', array('poke' => $poke));
     }

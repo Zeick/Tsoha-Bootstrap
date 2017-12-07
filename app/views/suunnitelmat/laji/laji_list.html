@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Pokémon-lajit</h1>
-
+{% if user_logged_in.nimi == 'admin' %}
 <p>
     <a href="{{base_path}}/laji/new" class="btn btn-success">Lisää Pokémon</a>
 </p>
-
+{% endif %}
+<h4>Lajeja yhteensä: {{lkm}}</h4>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -13,7 +14,9 @@
             <th>Tunnusluku</th>
             <th>Pituus (cm)</th>
             <th>Paino (kg)</th>
+            {% if user_logged_in.nimi == 'admin' %}
             <th>Toiminnot</th>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -23,6 +26,8 @@
             <td>{{poke.tunnusluku}}</td>
             <td>{{poke.pituus}}</td>
             <td>{{poke.paino}}</td>
+
+            {% if user_logged_in.nimi == 'admin' %}
             <td>
                 <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
@@ -31,6 +36,8 @@
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
             </td>
+            {% endif %}
+
         </tr>
         {% endfor %}
     </tbody>

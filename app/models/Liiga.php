@@ -5,6 +5,18 @@ class Liiga extends BaseModel {
     
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = ['tarkista_nimi', 'onko_samanniminen_olemassa'];
+    }
+    
+    public function tarkista_nimi(){
+        return BaseModel::validate_string_maxlength($this->nimi,1,20);
+    }
+    
+    public function onko_samanniminen_olemassa(){
+        //$query = DB::connection()->prepare('SELECT * FROM Liiga WHERE nimi = :nimi LIMIT 1');
+        //$query->execute(array('nimi' => $this->nimi));
+        //$row = $query->fetch();
+        return BaseModel::validate_same_name('Liiga','nimi',$this->nimi);
     }
     
     // Listaa kaikki liigat
@@ -45,8 +57,6 @@ class Liiga extends BaseModel {
             'nimi' => $this->nimi,
             'johtaja' => $this->johtaja
         ));
-        $row = $query->fetch();
-        $this->id = $row['id'];
     }
     
     // Poistaa liigan tietokannasta
