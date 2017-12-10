@@ -7,10 +7,12 @@
 {% endif %}
 <h1>{{kouluttaja.nimi}} <button class="btn btn-success">Kouluttaja </button></h1>
 <!-- Painikkeet tähän -->
-<p>
-    <a href="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/destroy" class="btn btn-danger">Poista</a>
+{% if user_logged_in.nimi == kouluttaja.nimi or user_logged_in.nimi == 'admin' %}
+<form method="post" action="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/destroy" style="display: inline-block">
+    <button type="submit" class="btn btn-danger">Poista</button>
+</form>
     <a href="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/edit" class="btn btn-default">Muokkaa</a>
-</p>
+{% endif %}
 <!-- Tiedot tulee listana tähän -->
 <ul>
     <li><strong>Lempipokémon:</strong> 

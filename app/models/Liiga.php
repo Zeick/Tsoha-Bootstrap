@@ -13,9 +13,6 @@ class Liiga extends BaseModel {
     }
     
     public function onko_samanniminen_olemassa(){
-        //$query = DB::connection()->prepare('SELECT * FROM Liiga WHERE nimi = :nimi LIMIT 1');
-        //$query->execute(array('nimi' => $this->nimi));
-        //$row = $query->fetch();
         return BaseModel::validate_same_name('Liiga','nimi',$this->nimi);
     }
     
@@ -60,7 +57,10 @@ class Liiga extends BaseModel {
     }
     
     // Poistaa liigan tietokannasta
+    // Kun liiga poistetaan, on kaikki siihen liittyvät jäsenyydet poistettava!
     public function destroy(){
+        $query0 = DB::connection()->prepare('DELETE FROM Jasenyys WHERE nimi = :nimi');
+        $query0->execute(array('nimi' => $this->nimi));
         $query = DB::connection()->prepare('DELETE FROM Liiga WHERE nimi = :nimi');
         $query->execute(array('nimi' => $this->nimi));
     }

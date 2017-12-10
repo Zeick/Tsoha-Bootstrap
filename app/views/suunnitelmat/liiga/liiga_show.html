@@ -5,29 +5,45 @@
     {{message}}
 </div>
 {% endif %}
+{% if error %}
+<div class="alert alert-danger">
+    <p><b>{{error}}</b></p>
+</div>
+{% endif %}
 <h1>{{liiga.nimi}}</h1>
-<!-- Painikkeet tähän -->
+<!-- Painikkeet tähän. Vain johtaja/admin voi poistaa liigan. -->
+{% if user_logged_in.nimi == liiga.johtaja or user_logged_in.nimi == 'admin' %}
+<a href="{{base_path}}/liiga/{{liiga.nimi}}/edit" class="btn btn-default">Muokkaa liigaa</a>
 <form method="post" action="{{base_path}}/liiga/{{liiga.nimi}}/destroy" style="display: inline-block">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
+{% endif %}
 {% if user_logged_in.nimi == liiga.johtaja %}
 <button class="btn btn-info">Liigajohtaja</button>
-{% else %}
-<form method="post" action="{{base_path}}/newjasenyys/{{liiga.nimi}}/jasen/{{user_logged_in.nimi}}">
-    <button type="submit" class="btn btn-primary">Eroa tai liity!</button>
-</form>
-{% endif %}
-<a href="{{base_path}}/liiga/{{liiga.nimi}}/edit" class="btn btn-default">Muokkaa liigaa</a>
+{% elseif onjasen %}
+                <form method='post' action='{{base_path}}/liiga/eroa'>
+                    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
+                    <input type='hidden' name='jasen' value='{{user_logged_in.nimi}}'>
+                    <button type='submit' class='btn btn-danger'>Eroa liigasta!</button>
+                </form>
 
+{% else %}
+                <form method='post' action='{{base_path}}/liiga/liity'>
+                    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
+                    <input type='hidden' name='jasen' value='{{user_logged_in.nimi}}'>
+                    <button type='submit' class='btn btn-primary'>Liity liigaan!</button>
+                </form>
+
+{% endif %}
 <!-- Tiedot tulee listana tähän -->
 <ul>
-    <li><strong>Liigajohtaja: </strong> {{liiga.johtaja}}
+    <li><strong>Liigajohtaja: </strong> <a href="{{base_path}}/kouluttaja/{{liiga.johtaja}}">{{liiga.johtaja}}</a>
     <li><strong>Jäsenet: </strong>
         {% if jasenet %}
         {{lkm}} kpl.
         <ul>
             {% for j in jasenet %}
-            <li>{{j.jasen}}</li>
+            <li><a href="{{base_path}}/kouluttaja/{{j.jasen}}">{{j.jasen}}</a></li>
             {% endfor %}
         </ul>
         {% else %}

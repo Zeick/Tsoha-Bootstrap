@@ -96,12 +96,17 @@ $routes->post('/liiga/:id/destroy', function($id) {
 $routes->get('/jasenyys', function() {
     JasenyysController::index();
 });
-$routes->post('/newjasenyys/:nimi/jasen/:jasen', function($nimi, $jasen) {
-    JasenyysController::store($nimi, $jasen);
+$routes->post('/liiga/liity', function() {
+    JasenyysController::store();
 });
-$routes->post('/jasenyys/:nimi/jasen/:jasen', function($nimi, $jasen) {
-    JasenyysController::destroy($nimi, $jasen);
+
+$routes->post('/liiga/eroa', function() {
+    JasenyysController::destroy();
 });
+
+/*$routes->post('/jasenyys/:nimi/jasen/:jasen', function($nimi, $jasen) {
+  JasenyysController::destroy($nimi, $jasen);
+  });*/
 
 // Laji-reitit
 $routes->get('/laji', function() {

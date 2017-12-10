@@ -6,7 +6,7 @@ class Pokemon extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = ['tarkista_nimi', 'tarkista_tunnusluku', 'tarkista_pituus', 'tarkista_paino'];
+        $this->validators = ['tarkista_nimi', 'tarkista_tunnusluku', 'tarkista_pituus', 'tarkista_paino', 'onko_samaid_olemassa'];
     }
 
     public function tarkista_nimi() {
@@ -23,6 +23,10 @@ class Pokemon extends BaseModel {
 
     public function tarkista_paino() {
         return BaseModel::validate_positive_integer($this->paino);
+    }
+
+    public function onko_samaid_olemassa() {
+        return BaseModel::validate_same_name('Pokemon', 'tunnusluku', $this->tunnusluku);
     }
 
     public static function all() {

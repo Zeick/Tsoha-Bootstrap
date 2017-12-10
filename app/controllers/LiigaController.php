@@ -11,12 +11,18 @@ class LiigaController extends BaseController {
 
     // Näyttää yksittäisen liigan tiedot
     public static function show($nimi) {
+        self::check_logged_in();
         $liiga = Liiga::find($nimi);
+        // Liigan kaikkien jäsenten lista ja lukumäärä
         $jasenet = Jasenyys::findByLiiga($nimi);
         $lkm = count($jasenet);
+        // Sivustoa käyttävän käyttäjän tiedot
+        $kayttaja = BaseController::get_user_logged_in();
+        // Tarkistetaan onko käyttäjä jo jäsen
+        $onjasen = Jasenyys::find($nimi, $kayttaja->nimi);
         // Liigan kaikki jäsenet
         View::make('suunnitelmat/liiga/liiga_show.html', 
-                array('liiga' => $liiga, 'jasenet' => $jasenet, 'lkm' => $lkm));
+                array('liiga' => $liiga, 'jasenet' => $jasenet, 'lkm' => $lkm, 'onjasen' => $onjasen));
     }
 
     // Uuden liigan luomislomakesivun generoiminen

@@ -19,7 +19,7 @@ class UserController extends BaseController {
 
     public static function logout() {
         $_SESSION['user'] = null;
-        Redirect::to('/login', array('message' => 'Olet nyt kirjautunut ulos PokéKannasta.'));
+        Redirect::to('/', array('message' => 'Olet nyt kirjautunut ulos PokéKannasta.'));
     }
 
     // Näyttää kaikki käyttäjät
@@ -55,7 +55,7 @@ class UserController extends BaseController {
             $kouluttaja->save();
             Redirect::to('/login', array('message' => 'Olet rekisteröitynyt onnistuneesti PokéKantaan. Voit nyt kirjautua sisään!'));
         } else {
-            View::make('suunnitelmat/kouluttaja/kouluttaja_new.html');
+            View::make('suunnitelmat/kouluttaja/kouluttaja_new.html', array('errors' => $errors));
         }
     }
 

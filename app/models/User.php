@@ -6,7 +6,7 @@ class User extends BaseModel {
 
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = ['tarkista_salasana', 'tarkista_nimi'];
+        $this->validators = ['tarkista_salasana', 'tarkista_nimi', 'onko_samanniminen_olemassa'];
     }
 
     public function tarkista_salasana() {
@@ -15,6 +15,11 @@ class User extends BaseModel {
 
     public function tarkista_nimi() {
         return BaseModel::validate_string_maxlength($this->nimi, 1, 20);
+    }
+
+    public function onko_samanniminen_olemassa() {
+        return BaseModel::validate_same_name('Kouluttaja', 'nimi', $this->nimi);
+//        return BaseModel::validate_username($this->nimi);
     }
 
     // Palauttaa kaikki käyttäjät
@@ -76,9 +81,21 @@ class User extends BaseModel {
 
     // Käyttäjän poistaminen tietokannasta
     // Kun käyttäjä poistetaan, on kaikki siihen liittyvät OmaPokemonit poistettava!
+    // Lisäksi liigat, joissa käyttäjä on johtajana, sekä niihin liittyvät jäsenyydet.
     public function destroy() {
+        // Poistetaan aluksi kaikki käyttäjän OmaPokemonit
         $query0 = DB::connection()->prepare('DELETE FROM OmaPokemon WHERE kid = :kid');
         $query0->execute(array('kid' => $this->nimi));
+        // Etsitään sitten kaikkien sellaisten liigojen jäsenyydet, joissa käyttäjä on johtajana
+        $query1 = DB::connection()->prepare('DELETE FROM Jasenyys WHERE EXISTS( SELECT * FROM Liiga WHERE Liiga.nimi = Jasenyys.nimi AND Liiga.johtaja = :nimi)');
+        $query1->execute(array('nimi' => $this->nimi));
+        // Poistetaan sitten käyttäjän omat jäsenyydet
+        $query2 = DB::connection()->prepare('DELETE FROM Jasenyys WHERE jasen = :nimi');
+        $query2->execute(array('nimi' => $this->nimi));
+        // Poistetaan sitten kaikki liigat, joissa käyttäjä on johtajana
+        $query3 = DB::connection()->prepare('DELETE FROM Liiga WHERE johtaja = :nimi');
+        $query3->execute(array('nimi' => $this->nimi));
+        // Lopuksi poistetaan itse käyttäjä
         $query = DB::connection()->prepare('DELETE FROM Kouluttaja WHERE nimi = :nimi');
         $query->execute(array('nimi' => $this->nimi));
     }
