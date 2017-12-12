@@ -30,7 +30,7 @@
                 <a href="{{base_path}}/kouluttaja/{{k.nimi}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>
-                <form method="post" action="{{base_path}}/kouluttaja/{{k.nimi}}/destroy" style="display: inline-block;">
+                <form method="post" action="{{base_path}}/kouluttaja/{{k.nimi}}/destroy" style="display: inline-block;" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän käyttäjän?">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
                 {% endif %}

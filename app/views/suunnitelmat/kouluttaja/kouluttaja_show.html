@@ -8,7 +8,7 @@
 <h1>{{kouluttaja.nimi}} <button class="btn btn-success">Kouluttaja </button></h1>
 <!-- Painikkeet tähän -->
 {% if user_logged_in.nimi == kouluttaja.nimi or user_logged_in.nimi == 'admin' %}
-<form method="post" action="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/destroy" style="display: inline-block">
+<form method="post" action="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän käyttäjän?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
     <a href="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/edit" class="btn btn-default">Muokkaa</a>
@@ -16,10 +16,71 @@
 <!-- Tiedot tulee listana tähän -->
 <ul>
     <li><strong>Lempipokémon:</strong> 
-    <li><strong>Liiga:</strong>  <label class="label label-danger">Jäsen</label></li>
 </ul>
+<h3>Liigat, joissa kouluttaja on johtajana</h3>
+{% if johtajaliigat %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Liiga</th>
+            <th>Toiminnot</th>
+        </tr>
+    </thead>
 
-<h2>Kouluttajan omat Pokémonit</h2>
+    <tbody>
+        {% for jl in johtajaliigat %}
+        <tr>
+            <td><a href="{{base_path}}/liiga/{{jl.nimi}}">{{jl.nimi}}</a></td>
+            <td>
+                {% if user_logged_in.nimi == jl.johtaja or user_logged_in.nimi == 'admin' %}
+                <a href="{{base_path}}/liiga/{{jl.nimi}}/edit">
+                    <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
+                </a>
+                <form method="post" action="{{base_path}}/liiga/{{jl.nimi}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa liigan?">
+                    <button type="submit" class="btn btn-danger btn-sm">Poista</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Kouluttaja ei ole vielä yhdenkään liigan johtaja!</p>
+{% endif %}
+<h3>Liigat, joissa kouluttaja on jäsenenä</h3>
+{% if liigat %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Liiga</th>
+            <th>Johtaja</th>
+            <th>Toiminnot</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for l in liigat %}
+        <tr>
+            <td><a href="{{base_path}}/liiga/{{l.nimi}}">{{l.nimi}}</a></td>
+            <td><a href="{{base_path}}/kouluttaja/{{l.johtaja}}">{{l.johtaja}}</a></td>
+            <td>
+                {% if user_logged_in.nimi == kouluttaja.nimi or user_logged_in.nimi == 'admin' %}
+                <form method="post" action="{{base_path}}/liiga/eroa" style="display: inline-block;">
+                    <input type='hidden' name='nimi' value='{{l.nimi}}'>
+                    <input type='hidden' name='jasen' value='{{kouluttaja.nimi}}'>
+                    <button type="submit" class="btn btn-danger btn-sm">Eroa liigasta</button>
+                </form>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Kouluttaja ei ole vielä minkään liigan jäsen!</p>
+{% endif %}
+<h3>Kouluttajan omat Pokémonit</h3>
 {% if poket %}
 <table class="table table-striped table-bordered">
     <thead>

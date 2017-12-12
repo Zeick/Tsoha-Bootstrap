@@ -14,7 +14,7 @@
 <!-- Painikkeet tähän. Vain johtaja/admin voi poistaa liigan. -->
 {% if user_logged_in.nimi == liiga.johtaja or user_logged_in.nimi == 'admin' %}
 <a href="{{base_path}}/liiga/{{liiga.nimi}}/edit" class="btn btn-default">Muokkaa liigaa</a>
-<form method="post" action="{{base_path}}/liiga/{{liiga.nimi}}/destroy" style="display: inline-block">
+<form method="post" action="{{base_path}}/liiga/{{liiga.nimi}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa liigan?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 {% endif %}

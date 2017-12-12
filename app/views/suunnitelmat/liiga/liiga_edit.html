@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Muokkaa liigaa Indigo</h1>
-  <button type="submit" class="btn btn-danger">Tuhoa liiga</button>
-  <form>
+<h1>Muokkaa liigaa {{liiga.nimi}}</h1>
+<form method="post" action="{{base_path}}/liiga/{{liiga.nimi}}/edit">
     <div class="form-group">
-      <label>Liigan kuvaus:</label>
-      <textarea class="form-control">Tähän liigaan pääsee vain jos on syntynyt Kantossa. Johtossa syntyneet älkööt vaivautuko!
-      </textarea>
+        <input type="hidden" name="johtaja" value="{{liiga.johtaja}}">
+        <label>Liigan kuvaus (max. 1000 merkkiä):</label>
+        <textarea rows="10" name="kuvaus" class="form-control">{{liiga.kuvaus}}
+        </textarea>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Tallenna</button>
+        <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
     </div>
-  </form>
+</form>
 {% endblock %}

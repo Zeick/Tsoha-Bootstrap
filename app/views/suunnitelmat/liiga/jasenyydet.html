@@ -18,7 +18,7 @@
             <td><a href="{{base_path}}/kouluttaja/{{j.jasen}}">{{j.jasen}}</a></td>
             <td>
                 {% if j.jasen == user_logged_in.nimi or user_logged_in.nimi == 'admin' %}
-                <form method="post" action="{{base_path}}/jasenyys/{{j.nimi}}/jasen/{{j.jasen}}" style="display: inline-block;">
+                <form method="post" action="{{base_path}}/jasenyys/{{j.nimi}}/jasen/{{j.jasen}}" style="display: inline-block;" class="destroy-form" data-confirm="Haluatko varmasti poistaa jäsenyyden?">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
                 {% endif %}

@@ -12,10 +12,11 @@ class PokemonController extends BaseController {
 
     // Näyttää yksittäisen Pokémon-lajin tiedot lajin sivulla
     public static function show($id) {
-//        self::check_logged_in();
         $poke = Pokemon::find($id);
+        // Kaikki kyseisen Pokémon-lajin yksilöt ja lukumäärä
         $kaikki = OmaPokemon::findByPokemon($id);
-        View::make('suunnitelmat/laji/laji_show.html', array('poke' => $poke, 'kaikki' => $kaikki));
+        $lkm = count($kaikki);
+        View::make('suunnitelmat/laji/laji_show.html', array('poke' => $poke, 'kaikki' => $kaikki, 'lkm' => $lkm));
     }
 
     // Uuden Pokémon-lajin luontilomakesivun generointi

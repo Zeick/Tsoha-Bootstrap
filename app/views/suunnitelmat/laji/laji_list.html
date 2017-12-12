@@ -32,7 +32,7 @@
                 <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>
-                <form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block;">
+                <form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block;" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémon-lajin?">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
             </td>

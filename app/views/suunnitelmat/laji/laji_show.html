@@ -7,7 +7,7 @@
 {% endif %}
 <h1>{{poke.nimi}} (#{{poke.tunnusluku}})</h1>
 <!-- Painikkeet tähän -->
-<form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block">
+<form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémon-lajin?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit" class="btn btn-default">Muokkaa</a>
@@ -23,6 +23,7 @@
 </p>
 <h2>Tietokannassa olevat {{poke.nimi}}-Pokémonit</h2>
 {% if kaikki %}
+<h4>Yhteensä: {{lkm}} kpl</h4>
 <table class="table table-striped table-bordered">
     <thead>
         <tr>

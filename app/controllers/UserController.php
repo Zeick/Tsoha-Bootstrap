@@ -33,8 +33,13 @@ class UserController extends BaseController {
     public static function show($nimi) {
         $kouluttaja = User::find($nimi);
         $poket = OmaPokemon::findByTrainer($nimi);
-        // Tähän käyttäjän liigojen haku!
-        View::make('suunnitelmat/kouluttaja/kouluttaja_show.html', array('poket' => $poket, 'kouluttaja' => $kouluttaja));
+        $liigat = Liiga::findByTrainer($nimi);
+        $johtajaliigat = Liiga::findByJohtaja($nimi);
+        View::make('suunnitelmat/kouluttaja/kouluttaja_show.html', 
+                array('poket' => $poket,
+                    'kouluttaja' => $kouluttaja,
+                    'liigat' => $liigat,
+                    'johtajaliigat' => $johtajaliigat));
     }
 
     // Käyttäjän rerkisteröitymissivun generoiminen

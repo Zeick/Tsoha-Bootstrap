@@ -59,12 +59,23 @@ class LiigaController extends BaseController {
     
     // TODO: Liigan tietojen muuttamislomakkeen luominen
     public static function edit($nimi){
-        
+        self::check_logged_in();
+        $liiga = Liiga::find($nimi);
+        View::make('suunnitelmat/liiga/liiga_edit.html', array('liiga' => $liiga));
     }
     
     // TODO: Liigan tietojen päivitys
     public static function update($nimi){
-        
+        self::check_logged_in();
+        $params = $_POST;
+        $attributes = array(
+            'nimi' => $nimi,
+            'johtaja' => $params['johtaja'],
+            'kuvaus' => $params['kuvaus']
+        );
+        $liiga = new Liiga($attributes);
+        $liiga->update();
+        Redirect::to('/liiga/' . $liiga->nimi, array('message' => 'Liigan kuvausta on onnistuneesti muokattu!'));
     }
 
 }

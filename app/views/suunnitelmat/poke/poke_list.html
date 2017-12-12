@@ -49,7 +49,7 @@
                 <a href="{{base_path}}/poke/{{p.id}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>
-                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;">
+                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémonin?">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
                 {% endif %}

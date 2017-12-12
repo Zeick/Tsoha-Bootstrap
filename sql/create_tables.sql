@@ -33,7 +33,8 @@ CREATE TABLE OmaPokemon(
 
 CREATE TABLE Liiga(
     nimi varchar(20) PRIMARY KEY,
-    johtaja varchar(20) REFERENCES Kouluttaja(nimi)
+    johtaja varchar(20) REFERENCES Kouluttaja(nimi),
+    kuvaus varchar(1000)
 );
 
 CREATE TABLE Jasenyys(
