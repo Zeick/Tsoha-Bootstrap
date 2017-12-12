@@ -7,7 +7,7 @@
 
 Olen vainnut aiheeksi [valmiin aiheen joka on nimeltään Pokémontietokanta](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html), pienin muutoksin.
 
-## Valmis toiminnallisuus
+## Valmis toiminnallisuus (arviolta 95% valmista!)
 * Pokémon-lajien lisääminen, muokkaaminen, listaaminen ja tuhoaminen.
 * Omien Pokémonien lisääminen, muokkaaminen, listaaminen ja tuhoaminen.
 * Rekisteröityminen, sisäänkirjautuminen, uloskirjautuminen, salasanan vaihtaminen ja tunnuksen poistaminen.
@@ -15,10 +15,11 @@ Olen vainnut aiheeksi [valmiin aiheen joka on nimeltään Pokémontietokanta](ht
 * Pokémon-lajien yksilöiden listaaminen esittelysivulla
 * Lomakkeiden validointi
 * Pokémon-lajin tuhoamisessa on kaikki siihen liittyvät yksilöt myös tuhottava
-
-## Ei vielä valmis (toiminnallisuus tulossa!)
 * Pokémon-liigojen lisääminen, listaaminen ja tuhoaminen (esittelysivut näkyvissä)
 * Liigajäsenyyksien lisääminen, poistaminen ja listaaminen
 * Käyttäjän tuhoamisessa on kaikki käyttäjään liittyvät yksilöt, jäsenyydet ja liigajohtajuudet tuhottava.
 * Liigan tuhoamisessa (myös edellisessä kohdassa) on kaikki liigaan liittyvät jäsenyydet myös tuhottava
+
+## Ei vielä valmis (mutta pian!)
 * Käyttäjä voi valita lempipokémonin
+* Dokumentaation päivittäminen
