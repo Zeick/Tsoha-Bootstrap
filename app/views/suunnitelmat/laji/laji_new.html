@@ -18,15 +18,15 @@
     </div>
     <div class="form-group">
         <label>Tunnusluku (kokonaisluku!)</label>
-        <input type="text" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
+        <input type="number" min="1" max="9999" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
     </div>
     <div class="form-group">
         <label>Pituus (cm, kokonaisluku!)</label>
-        <input type="text" name="pituus" class="form-control" value="{{attributes.pituus}}">
+        <input type="number" min="1" max="9999" name="pituus" class="form-control" value="{{attributes.pituus}}">
     </div>
     <div class="form-group">
         <label>Paino (kg, kokonaisluku!)</label>
-        <input type="text" name="paino" class="form-control" value="{{attributes.paino}}">
+        <input type="number" min="1" max="9999" name="paino" class="form-control" value="{{attributes.paino}}">
     </div>
     <div class="form-group">
         <label>Kuvaus (max. 2000 merkkiä)</label>

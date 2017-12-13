@@ -21,18 +21,18 @@
 {% if user_logged_in.nimi == liiga.johtaja %}
 <button class="btn btn-info">Liigajohtaja</button>
 {% elseif onjasen %}
-                <form method='post' action='{{base_path}}/liiga/eroa'>
-                    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
-                    <input type='hidden' name='jasen' value='{{user_logged_in.nimi}}'>
-                    <button type='submit' class='btn btn-danger'>Eroa liigasta!</button>
-                </form>
+<form method='post' action='{{base_path}}/liiga/eroa'>
+    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
+    <input type='hidden' name='jasen' value='{{user_logged_in.nimi}}'>
+    <button type='submit' class='btn btn-danger'>Eroa liigasta!</button>
+</form>
 
 {% else %}
-                <form method='post' action='{{base_path}}/liiga/liity'>
-                    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
-                    <input type='hidden' name='jasen' value='{{user_logged_in.nimi}}'>
-                    <button type='submit' class='btn btn-primary'>Liity liigaan!</button>
-                </form>
+<form method='post' action='{{base_path}}/liiga/liity'>
+    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
+    <input type='hidden' name='jasen' value='{{user_logged_in.nimi}}'>
+    <button type='submit' class='btn btn-primary'>Liity liigaan!</button>
+</form>
 
 {% endif %}
 <!-- Tiedot tulee listana tähän -->
@@ -43,7 +43,15 @@
         {{lkm}} kpl.
         <ul>
             {% for j in jasenet %}
-            <li><a href="{{base_path}}/kouluttaja/{{j.jasen}}">{{j.jasen}}</a></li>
+            <li><a href="{{base_path}}/kouluttaja/{{j.jasen}}">{{j.jasen}}</a>
+                {% if user_logged_in.nimi == liiga.johtaja or user_logged_in.nimi == 'admin' %}
+                <form method='post' action='{{base_path}}/liiga/eroa'>
+                    <input type='hidden' name='nimi' value='{{liiga.nimi}}'>
+                    <input type='hidden' name='jasen' value='{{j.jasen}}'>
+                    <button type='submit' class='btn btn-danger btn-xs'>Erota jäsen liigasta!</button>
+                </form>
+                {% endif %}
+            </li>
             {% endfor %}
         </ul>
         {% else %}

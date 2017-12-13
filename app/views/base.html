@@ -43,21 +43,19 @@
                         <li><a href="{{base_path}}/kouluttaja">Kouluttajat</a></li>
                         <li><a href="{{base_path}}/laji">Lajit</a></li>
                         <li><a href="{{base_path}}/liiga">Liigat</a></li>
+                        {% if user_logged_in.name == 'admin' %}
+                        <!-- Vain ylläpitäjä voi nähdä liigajäsenyydet -->
                         <li><a href="{{base_path}}/jasenyys">Jäsenyydet</a></li>
+                        {% endif %}
                     </ul>
                     {% if user_logged_in %}
-                    <!--                    <ul class="nav navbar-nav navbar-right">
-                                            <li>Käyttäjä {{user_logged_in.nimi}} on kirjautunut sisään</li>
-                                        </ul>-->
                     <form class="navbar-form navbar-right" method="post" action="{{base_path}}/logout">
                         <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
                     </form>
                     {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         {% if user_logged_in %}
-                        <li><a href="{{base_path}}/kouluttaja/{{user_logged_in.nimi}}">
-                                <button class="btn btn-default">Käyttäjä: {{user_logged_in.nimi}}</button>
-                            </a></li>
+                        <li><a href="{{base_path}}/kouluttaja/{{user_logged_in.nimi}}">Käyttäjä: {{user_logged_in.nimi}}</a></li>
                         {% else %}
                         <li><a href="{{base_path}}/kouluttaja/new">Rekisteröidy!</a></li>
                         <li><a href="{{base_path}}/login">Kirjaudu!</a></li>

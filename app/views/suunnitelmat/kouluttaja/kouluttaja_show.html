@@ -5,7 +5,7 @@
     {{message}}
 </div>
 {% endif %}
-<h1>{{kouluttaja.nimi}} <button class="btn btn-success">Kouluttaja </button></h1>
+<h1>{{kouluttaja.nimi}}</h1>
 <!-- Painikkeet tähän -->
 {% if user_logged_in.nimi == kouluttaja.nimi or user_logged_in.nimi == 'admin' %}
 <form method="post" action="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän käyttäjän?">
@@ -13,10 +13,6 @@
 </form>
     <a href="{{base_path}}/kouluttaja/{{kouluttaja.nimi}}/edit" class="btn btn-default">Muokkaa</a>
 {% endif %}
-<!-- Tiedot tulee listana tähän -->
-<ul>
-    <li><strong>Lempipokémon:</strong> 
-</ul>
 <h3>Liigat, joissa kouluttaja on johtajana</h3>
 {% if johtajaliigat %}
 <table class="table table-striped table-bordered">
@@ -85,7 +81,7 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Laji (nro)</th>
+            <th>Laji</th>
             <th>Lempinimi</th>
             <th>Atk</th>
             <th>Def</th>
@@ -103,7 +99,13 @@
     <tbody>
         {% for p in poket %}
         <tr>
-            <td><a href="{{base_path}}/laji/{{p.pid}}">{{p.pid}}</a></td>
+            <td>
+            {% for laji in lajit %}
+                    {% if laji.tunnusluku == p.pid %}
+                        <a href="{{base_path}}/laji/{{p.pid}}">{{laji.nimi}}</a>
+                    {% endif %}
+                {% endfor %}
+            </td>
             <td><a href="{{base_path}}/poke/{{p.id}}">{{p.lempinimi}}</a></td>
             <td>{{p.atk}}</td>
             <td>{{p.def}}</td>
@@ -119,7 +121,7 @@
                 <a href="{{base_path}}/poke/{{p.id}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>
-                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;">
+                <form method="post" action="{{base_path}}/poke/{{p.id}}/destroy" style="display: inline-block;" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémonin?">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
                 {% endif %}

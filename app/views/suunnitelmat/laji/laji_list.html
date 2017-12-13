@@ -14,9 +14,7 @@
             <th>Tunnusluku</th>
             <th>Pituus (cm)</th>
             <th>Paino (kg)</th>
-            {% if user_logged_in.nimi == 'admin' %}
             <th>Toiminnot</th>
-            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -27,16 +25,22 @@
             <td>{{poke.pituus}}</td>
             <td>{{poke.paino}}</td>
 
-            {% if user_logged_in.nimi == 'admin' %}
             <td>
+                <a href="https://bulbapedia.bulbagarden.net/wiki/{{poke.nimi}}">
+                    <button type="submit" class="btn btn-success btn-sm">Bulbapedia</button>
+                </a>
+                <a href="https://en.wikipedia.org/wiki/{{poke.nimi}}">
+                    <button type="submit" class="btn btn-default btn-sm">Wikipedia</button>
+                </a>
+            {% if user_logged_in.nimi == 'admin' %}
                 <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>
                 <form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block;" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémon-lajin?">
                     <button type="submit" class="btn btn-danger btn-sm">Poista</button>
                 </form>
-            </td>
             {% endif %}
+            </td>
 
         </tr>
         {% endfor %}

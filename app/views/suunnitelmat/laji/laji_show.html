@@ -6,14 +6,17 @@
 </div>
 {% endif %}
 <h1>{{poke.nimi}} (#{{poke.tunnusluku}})</h1>
-<!-- Painikkeet tähän -->
+<!-- Painikkeet tähän, vain admin voi muokata -->
+{% if user_logged_in.nimi == 'admin' %}
 <form method="post" action="{{base_path}}/laji/{{poke.tunnusluku}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémon-lajin?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 <a href="{{base_path}}/laji/{{poke.tunnusluku}}/edit" class="btn btn-default">Muokkaa</a>
-
+{% endif %}
 <!-- Tiedot tulee listana tähän -->
 <ul>
+    <li><a href="https://bulbapedia.bulbagarden.net/wiki/{{poke.nimi}}">Lajin tiedot Bulbapediassa</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/{{poke.nimi}}">Lajin tiedot Wikipediassa</a></li>
     <li><strong>Pituus: </strong> {{poke.pituus}} cm</li>
     <li><strong>Paino: </strong> {{poke.paino}} kg</li>  
 </ul>
@@ -56,7 +59,7 @@
             <td>{{p.sukupuoli}}</td>
             <td>{{p.esine}}</td>
             <td>
-                {% if p.kid == user_logged_in.nimi %}
+                {% if p.kid == user_logged_in.nimi or 'admin' == user_logged_in.nimi %}
                 <a href="{{base_path}}/poke/{{p.id}}/edit">
                     <button type="submit" class="btn btn-warning btn-sm">Muokkaa</button>
                 </a>

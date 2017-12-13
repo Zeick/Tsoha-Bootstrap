@@ -1,37 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 {% if errors %}
-    <div class="alert alert-danger">
-        <p><b>Pokémon-lajin muokkaaminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
-      <ul>
+<div class="alert alert-danger">
+    <p><b>Pokémon-lajin muokkaaminen epäonnistui! Noudata annettuja rajoituksia!</b></p>
+    <ul>
         {% for error in errors %}
-          <li>{{error}}</li>
+        <li>{{error}}</li>
         {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
+    </ul>
+</div>
+{% endif %}
 <form method="post" action="{{base_path}}/laji/{{attributes.tunnusluku}}/edit">
-    <div class="form-group">
-        <label>Nimi (max. 20 merkkiä)</label>
-        <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Nimi (max. 20 merkkiä)</label>
+            <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Pituus (cm, kokonaisluku!)</label>
+            <input type="number" min="1" max="9999" name="pituus" class="form-control" value="{{attributes.pituus}}">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Paino (kg, kokonaisluku!)</label>
+            <input type="number" min="1" max="9999" name="paino" class="form-control" value="{{attributes.paino}}">
+        </div>
     </div>
-    <div class="form-group">
-<!--        <label>Tunnusluku (kokonaisluku!)</label>-->
-        <input type="hidden" name="tunnusluku" class="form-control" value="{{attributes.tunnusluku}}">
-    </div>
-    <div class="form-group">
-        <label>Pituus (cm, kokonaisluku!)</label>
-        <input type="text" name="pituus" class="form-control" value="{{attributes.pituus}}">
-    </div>
-    <div class="form-group">
-        <label>Paino (kg, kokonaisluku!)</label>
-        <input type="text" name="paino" class="form-control" value="{{attributes.paino}}">
-    </div>
-    <div class="form-group">
+    <div class="form-group col-md-12">
         <label>Kuvaus (max. 2000 merkkiä)</label>
         <textarea rows="5" name="kuvaus" class="form-control">{{attributes.kuvaus}}</textarea>
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-12">
         <button type="submit" class="btn btn-primary">Tallenna muutokset</button>
     </div>
 </form>

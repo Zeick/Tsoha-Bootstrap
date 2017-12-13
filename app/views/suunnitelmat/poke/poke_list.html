@@ -13,7 +13,7 @@
 <table class="table table-striped table-bordered">
     <thead>
         <tr>
-            <th>Laji (nro)</th>
+            <th>Laji</th>
             <th>Kouluttaja</th>
             <th>Lempinimi</th>
             <th>Atk</th>
@@ -32,7 +32,13 @@
     <tbody>
         {% for p in kaikki %}
         <tr>
-            <td><a href="{{base_path}}/laji/{{p.pid}}">{{p.pid}}</a></td>
+            <td>
+                {% for laji in lajit %}
+                    {% if laji.tunnusluku == p.pid %}
+                        <a href="{{base_path}}/laji/{{p.pid}}">{{laji.nimi}}</a>
+                    {% endif %}
+                {% endfor %}
+            </td>
             <td><a href="{{base_path}}/kouluttaja/{{p.kid}}">{{p.kid}}</a></td>
             <td><a href="{{base_path}}/poke/{{p.id}}">{{p.lempinimi}}</a></td>
             <td>{{p.atk}}</td>

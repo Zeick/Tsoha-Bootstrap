@@ -7,10 +7,12 @@
 {% endif %}
 <h1>{{poke.lempinimi}} (#{{poke.pid}})</h1>
 <!-- Painikkeet tähän -->
+{% if user_logged_in.nimi == poke.kid or user_logged_in.nimi == 'admin' %}
 <form method="post" action="{{base_path}}/poke/{{poke.id}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémonin?">
     <button type="submit" class="btn btn-danger">Poista</button>
 </form>
 <a href="{{base_path}}/poke/{{poke.id}}/edit" class="btn btn-default">Muokkaa</a>
+{% endif %}
 <!-- Tiedot tulee listana tähän -->
 <ul>
     <li><strong>Kouluttaja:</strong> <a href="{{base_path}}/kouluttaja/{{poke.kid}}">{{poke.kid}}</a> </li>

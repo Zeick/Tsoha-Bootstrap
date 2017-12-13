@@ -13,7 +13,6 @@
         <tr>
             <th>Nimi</th>
             <th>Johtaja</th>
-            <th>Jäseniä yhteensä</th>
             <th>Toiminnot</th>
         </tr>
     </thead>
@@ -23,7 +22,6 @@
         <tr>
             <td><a href="{{base_path}}/liiga/{{l.nimi}}">{{l.nimi}}</a></td>
             <td><a href="{{base_path}}/kouluttaja/{{l.johtaja}}">{{l.johtaja}}</a></td>
-            <td></td>
             <td>
                 {% if user_logged_in.nimi == l.johtaja or user_logged_in.nimi == 'admin' %}
                 <a href="{{base_path}}/liiga/{{l.nimi}}/edit">

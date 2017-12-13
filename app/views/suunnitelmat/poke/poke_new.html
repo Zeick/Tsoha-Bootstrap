@@ -13,59 +13,79 @@
 {% endif %}
 <p>Huomaa, että Lv, HP, Atk, Def, Speed, SpAtk ja SpDef vaativat kokonaislukuarvoja.</p>
 <form method="post" action="{{base_path}}/poke">
-    <div class="form-group">
-        <label>Lempinimi (max. 20 merkkiä)</label>
-        <input type="text" name="lempinimi" class="form-control" value="{{attributes.lempinimi}}">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Pokémon-laji</label>
+            <select class="form-control" name="pid">
+                {% for laji in lajit %}
+                {% if attributes.pid == laji.tunnusluku %}
+                <option selected="selected" value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+                {% else %}
+                <option value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label>Lempinimi (max. 20 merkkiä)</label>
+            <input type="text" name="lempinimi" class="form-control" value="{{attributes.lempinimi}}">
+        </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-1">
             <label>Lv</label>
-            <input type="text" name="lvl" class="form-control" value="{{attributes.lvl}}">
+            <input type="number" min="1" max="100" name="lvl" class="form-control" value="{{attributes.lvl}}">
         </div>
         <div class="form-group col-md-1">
             <label>HP</label>
-            <input type="text" name="hp" class="form-control" value="{{attributes.hp}}">
+            <input type="number" min="1" max="999" name="hp" class="form-control" value="{{attributes.hp}}">
         </div>
         <div class="form-group col-md-1">
             <label>Atk</label>
-            <input type="text" name="atk" class="form-control" value="{{attributes.atk}}">
+            <input type="number" min="1" max="999" name="atk" class="form-control" value="{{attributes.atk}}">
         </div>
         <div class="form-group col-md-1">
             <label>Def</label>
-            <input type="text" name="def" class="form-control" value="{{attributes.def}}">
+            <input type="number" min="1" max="999" name="def" class="form-control" value="{{attributes.def}}">
         </div>
         <div class="form-group col-md-1">
             <label>Speed</label>
-            <input type="text" name="speed" class="form-control" value="{{attributes.speed}}">
+            <input type="number" min="1" max="999" name="speed" class="form-control" value="{{attributes.speed}}">
         </div>
         <div class="form-group col-md-1">
             <label>SpAtk</label>
-            <input type="text" name="spatk" class="form-control" value="{{attributes.spatk}}">
+            <input type="number" min="1" max="999" name="spatk" class="form-control" value="{{attributes.spatk}}">
         </div>
         <div class="form-group col-md-1">
             <label>SpDef</label>
-            <input type="text" name="spdef" class="form-control" value="{{attributes.spdef}}">
+            <input type="number" min="1" max="999" name="spdef" class="form-control" value="{{attributes.spdef}}">
         </div>
         <div class="form-group col-md-2">
-            <label>Sukupuoli (U/N/E)</label>
-            <input type="text" name="sukupuoli" class="form-control" value="{{attributes.sukupuoli}}">
+            <label>Sukupuoli</label>
+            <select class="form-control" name="sukupuoli">
+                <option value="U">Uros</option>
+                <option value="N">Naaras</option>
+                <option value="E">Ei määritelty</option>
+            </select>
         </div>
     </div>
 
     <div class="form-group col-md-3">
         <label>Esine</label>
-        <input type="text" name="esine" class="form-control" value="{{attributes.esine}}">
-    </div>
-    <div class="form-group">
-        <label>Pokémon-laji</label>
-        <select class="form-control" name="pid">
-            {% for laji in lajit %}
-            {% if attributes.pid == laji.tunnusluku %}
-            <option selected="selected" value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
-            {% else %}
-            <option value="{{laji.tunnusluku}}">{{laji.nimi}}</option>
-            {% endif %}
-            {% endfor %}
+        <select class="form-control" name="esine">
+            <option value="(EI ESINETTÄ)">Ei esinettä</option>
+            <option value="Berry">Berry</option>
+            <option value="Big Root">Big Root</option>
+            <option value="Bright Powder">Bright Powder</option>   
+            <option value="Everstone">Everstone</option>
+            <option value="Exp. Share">Exp. Share</option>
+            <option value="Gold Berry">Gold Berry</option>
+            <option value="Lax Incense">Lax Incense</option>
+            <option value="Leftovers">Leftovers</option>
+            <option value="Shell Bell">Shell Bell</option>
+            <option value="Soft Sand">Soft Sand</option>
+            <option value="Thick Club">Thick Club</option>
         </select>
     </div>
     <!--    <div class="form-group">
