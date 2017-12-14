@@ -27,7 +27,8 @@ class OmaPokemonController extends BaseController {
     // Näyttää yksittäisen OmaPokemonin tiedot
     public static function show($id) {
         $poke = OmaPokemon::find($id);
-        View::make('suunnitelmat/poke/poke_show.html', array('poke' => $poke));
+        $lajinimi = Pokemon::find($poke->pid)->nimi;
+        View::make('suunnitelmat/poke/poke_show.html', array('poke' => $poke, 'lajinimi' => $lajinimi));
     }
 
     // Uuden OmaPokémonin luomislomakesivun generoiminen

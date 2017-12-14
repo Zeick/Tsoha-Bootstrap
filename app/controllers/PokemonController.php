@@ -68,7 +68,7 @@ class PokemonController extends BaseController {
         );
         $poke = new Pokemon($attributes);
         $errors = $poke->errors();
-        if (count($errors) == 0) {
+        if (count($errors) == 1) {
             // Parametrit kunnossa -> Tallennetaan Pokémon tietokantaan
             $poke->update();
             Redirect::to('/laji/' . $poke->tunnusluku, array('message' => 'Pokémon-lajin tietoja on onnistuneesti muokattu!'));

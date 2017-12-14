@@ -37,7 +37,8 @@ class LiigaController extends BaseController {
         $params = $_POST;
         $attributes = array(
             'nimi' => $params['nimi'],
-            'johtaja' => $params['johtaja']
+            'johtaja' => $params['johtaja'],
+            'kuvaus' => $params['kuvaus']
         );
         $liiga = new Liiga($attributes);
         $errors = $liiga->errors();

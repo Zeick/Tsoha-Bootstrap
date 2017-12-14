@@ -78,8 +78,8 @@ class Liiga extends BaseModel {
 
     // Tallentaa liigan tietokantaan
     public function save() {
-        $query = DB::connection()->prepare('INSERT INTO Liiga (nimi, johtaja) '
-                . 'VALUES (:nimi, :johtaja)');
+        $query = DB::connection()->prepare('INSERT INTO Liiga (nimi, johtaja, kuvaus) '
+                . 'VALUES (:nimi, :johtaja, :kuvaus)');
         $query->execute(array(
             'nimi' => $this->nimi,
             'johtaja' => $this->johtaja,

@@ -5,7 +5,7 @@
     {{message}}
 </div>
 {% endif %}
-<h1>{{poke.lempinimi}} (#{{poke.pid}})</h1>
+<h1>{{poke.lempinimi}} ({{lajinimi}} #{{poke.pid}})</h1>
 <!-- Painikkeet tähän -->
 {% if user_logged_in.nimi == poke.kid or user_logged_in.nimi == 'admin' %}
 <form method="post" action="{{base_path}}/poke/{{poke.id}}/destroy" style="display: inline-block" class="destroy-form" data-confirm="Haluatko varmasti poistaa tämän Pokémonin?">
